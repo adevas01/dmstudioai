@@ -1,14 +1,105 @@
-// Simple message when the page loads
+// DM Studio AI - Modern interactive animations
+
 console.log("DM Studio AI website loaded successfully.");
 
-// Button interaction
+// -----------------------------
+// Button interactions
+// -----------------------------
 const startButton = document.querySelector(".primary-btn");
 const demoButton = document.querySelector(".secondary-btn");
 
-startButton.addEventListener("click", function () {
-    alert("Welcome to DM Studio AI! The learning area will be added soon.");
+if (startButton) {
+    startButton.addEventListener("click", function () {
+        alert("Welcome to DM Studio AI! The learning area will be added soon.");
+    });
+}
+
+if (demoButton) {
+    demoButton.addEventListener("click", function () {
+        alert("Demo coming soon. This will show how the AI learning assistant works.");
+    });
+}
+
+// -----------------------------
+// Typing effect for AI Assistant
+// -----------------------------
+const aiText = document.querySelector(".card-one p");
+
+if (aiText) {
+    const message = "Hi! How can I help you learn today?";
+    let index = 0;
+
+    aiText.textContent = "";
+
+    function typeMessage() {
+        if (index < message.length) {
+            aiText.textContent += message.charAt(index);
+            index++;
+            setTimeout(typeMessage, 45);
+        }
+    }
+
+    setTimeout(typeMessage, 600);
+}
+
+// -----------------------------
+// Scroll reveal animation
+// -----------------------------
+const revealElements = document.querySelectorAll(
+    ".feature-card, .learning-card, .page-card, .dashboard-card, .testimonial, .about-section"
+);
+
+const revealObserver = new IntersectionObserver(
+    function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+revealElements.forEach(function (element) {
+    element.classList.add("reveal");
+    revealObserver.observe(element);
 });
 
-demoButton.addEventListener("click", function () {
-    alert("Demo coming soon. This will show how the AI learning assistant works.");
+// -----------------------------
+// Animated dashboard progress bar
+// -----------------------------
+const progressFill = document.querySelector(".progress-fill");
+
+if (progressFill) {
+    progressFill.style.width = "0%";
+
+    setTimeout(function () {
+        progressFill.style.width = "75%";
+    }, 500);
+}
+
+// -----------------------------
+// Futuristic mouse glow effect
+// -----------------------------
+const glow = document.createElement("div");
+glow.classList.add("mouse-glow");
+document.body.appendChild(glow);
+
+document.addEventListener("mousemove", function (event) {
+    glow.style.left = event.clientX + "px";
+    glow.style.top = event.clientY + "px";
+});
+
+// -----------------------------
+// Active navigation highlight
+// -----------------------------
+const currentUrl = window.location.href;
+const navLinks = document.querySelectorAll("nav a");
+
+navLinks.forEach(function (link) {
+    if (currentUrl.includes(link.getAttribute("href"))) {
+        link.classList.add("active-link");
+    }
 });
