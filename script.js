@@ -1,10 +1,8 @@
 // DM Studio AI - Modern interactive animations
 
-console.log("DM Studio AI website loaded successfully.");
+console.log("DM Studio AI animations loaded.");
 
-// -----------------------------
 // Button interactions
-// -----------------------------
 const startButton = document.querySelector(".primary-btn");
 const demoButton = document.querySelector(".secondary-btn");
 
@@ -20,9 +18,7 @@ if (demoButton) {
     });
 }
 
-// -----------------------------
 // Typing effect for AI Assistant
-// -----------------------------
 const aiText = document.querySelector(".card-one p");
 
 if (aiText) {
@@ -42,34 +38,32 @@ if (aiText) {
     setTimeout(typeMessage, 600);
 }
 
-// -----------------------------
 // Scroll reveal animation
-// -----------------------------
 const revealElements = document.querySelectorAll(
     ".feature-card, .learning-card, .page-card, .dashboard-card, .testimonial, .about-section"
 );
 
-const revealObserver = new IntersectionObserver(
-    function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-            }
-        });
-    },
-    {
-        threshold: 0.15
-    }
-);
+if (revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
-revealElements.forEach(function (element) {
-    element.classList.add("reveal");
-    revealObserver.observe(element);
-});
+    revealElements.forEach(function (element) {
+        element.classList.add("reveal");
+        revealObserver.observe(element);
+    });
+}
 
-// -----------------------------
 // Animated dashboard progress bar
-// -----------------------------
 const progressFill = document.querySelector(".progress-fill");
 
 if (progressFill) {
@@ -80,9 +74,7 @@ if (progressFill) {
     }, 500);
 }
 
-// -----------------------------
 // Futuristic mouse glow effect
-// -----------------------------
 const glow = document.createElement("div");
 glow.classList.add("mouse-glow");
 document.body.appendChild(glow);
@@ -92,14 +84,30 @@ document.addEventListener("mousemove", function (event) {
     glow.style.top = event.clientY + "px";
 });
 
-// -----------------------------
+// Add visible animation classes to hero elements
+const robot = document.querySelector(".robot");
+const floatingCards = document.querySelectorAll(".floating-card");
+
+if (robot) {
+    robot.classList.add("animated-robot");
+}
+
+floatingCards.forEach(function (card) {
+    card.classList.add("animated-floating-card");
+});
+
 // Active navigation highlight
-// -----------------------------
-const currentUrl = window.location.href;
+const currentRoute = new URLSearchParams(window.location.search).get("route");
 const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach(function (link) {
-    if (currentUrl.includes(link.getAttribute("href"))) {
+    const linkRoute = new URL(link.href).searchParams.get("route");
+
+    if (currentRoute && currentRoute === linkRoute) {
+        link.classList.add("active-link");
+    }
+
+    if (!currentRoute && link.href.includes("route=home")) {
         link.classList.add("active-link");
     }
 });
