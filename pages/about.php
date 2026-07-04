@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | DM Studio AI</title>
-    <link rel="stylesheet" href="style.css?v=2">
-</head>
-<body>
-
-<header>
-    <div class="logo"><span>DM</span> Studio AI</div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#features">Features</a>
-        <a href="courses.html">Courses</a>
-        <a href="tools.html">Tools</a>
-        <a href="about.html">About</a>
-    </nav>
-
-    <button class="top-btn">Get Started</button>
-</header>
-
 <section class="page-hero">
     <h1>About DM Studio AI</h1>
     <p>
@@ -56,24 +32,3 @@
         </ul>
     </div>
 </section>
-
-<footer>
-    <div>
-        <h3>DM Studio AI</h3>
-        <p>AI-powered learning for digital media students.</p>
-    </div>
-
-    <div>
-        <h4>Quick Links</h4>
-        <p>Home | Courses | Tools | About</p>
-    </div>
-
-    <div>
-        <h4>Website</h4>
-        <p>dmstudioai.com</p>
-    </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
