@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // DM Studio AI - Front Controller
 // All pages are loaded through index.php using the route parameter.
 // Example: index.php?route=about&nav=dmstudioai
@@ -22,6 +23,9 @@ $routes = [
     "manager" => "pages/manager-dashboard.php",
     "owner" => "pages/owner-dashboard.php",
 
+    // User management page
+    "users" => "pages/user-management.php",
+
     // Authentication pages
     "login" => "pages/login.php",
     "register" => "pages/register.php"
@@ -39,6 +43,9 @@ $pageTitles = [
     "teacher" => "Teacher Dashboard | DM Studio AI",
     "manager" => "Manager Dashboard | DM Studio AI",
     "owner" => "Owner Dashboard | DM Studio AI",
+
+    // User management page title
+    "users" => "User Management | DM Studio AI",
 
     // Authentication page titles
     "login" => "Login | DM Studio AI",

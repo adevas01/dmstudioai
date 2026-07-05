@@ -1,6 +1,6 @@
 <section class="dashboard-hero">
     <h1>Teacher Dashboard</h1>
-    <p>Monitor student progress, support learners, and manage digital media activities.</p>
+    <p>Monitor student progress, support learners, approve students, and manage digital media activities.</p>
 </section>
 
 <section class="dashboard-layout">
@@ -9,7 +9,14 @@
         <p><strong>Group:</strong> SEND Level 1 Digital Media</p>
         <p><strong>Active students:</strong> 12</p>
         <p><strong>Current unit:</strong> Video Editing</p>
-        <button class="primary-btn small-btn">View Class</button>
+        <p>
+            Teachers can support students, check learning progress, give feedback,
+            create activities, and approve student accounts.
+        </p>
+
+        <a href="index.php?route=users&nav=<?php echo $navToken; ?>">
+            <button class="primary-btn small-btn">Manage Students</button>
+        </a>
     </div>
 
     <div class="dashboard-card">
@@ -18,6 +25,20 @@
         <p>Graphic Design: 45%</p>
         <p>Animation: 30%</p>
         <p>Digital Storytelling: 60%</p>
+
+        <button class="primary-btn small-btn">View Progress</button>
+    </div>
+
+    <div class="dashboard-card">
+        <h2>Student Approval</h2>
+        <p>
+            Review new student accounts and approve access when they are ready
+            to join the learning platform.
+        </p>
+
+        <a href="index.php?route=users&nav=<?php echo $navToken; ?>">
+            <button class="primary-btn small-btn">Approve Students</button>
+        </a>
     </div>
 
     <div class="dashboard-card">
@@ -33,5 +54,15 @@
         <h2>Create Activity</h2>
         <p>Create a SEND-friendly task with simple steps and success criteria.</p>
         <button class="primary-btn small-btn">Create Task</button>
+    </div>
+
+    <div class="dashboard-card">
+        <h2>Teacher Rules</h2>
+        <ul>
+            <li>Teachers can approve students.</li>
+            <li>Teachers can manage student progress.</li>
+            <li>Teachers cannot manage other teachers.</li>
+            <li>Teachers cannot manage managers or the owner.</li>
+        </ul>
     </div>
 </section>
