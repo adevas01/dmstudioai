@@ -12,7 +12,8 @@ $email = trim($_POST["email"] ?? "");
 $password = $_POST["password"] ?? "";
 
 if (empty($email) || empty($password)) {
-    die("Please enter your email and password.");
+    header("Location: ../index.php?route=login&nav=dmstudioai&error=empty");
+    exit;
 }
 
 $stmt = $pdo->prepare("
@@ -25,16 +26,19 @@ $stmt = $pdo->prepare("
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
-if (!$user) {
-    die("Invalid email or password.");
+if (!$user || !password_verify($password, $user["password"])) {
+    header("Location: ../index.php?route=login&nav=dmstudioai&error=invalid");
+    exit;
 }
 
-if (!password_verify($password, $user["password"])) {
-    die("Invalid email or password.");
+if ($user["status"] === "pending") {
+    header("Location: ../index.php?route=login&nav=dmstudioai&error=pending");
+    exit;
 }
 
-if ($user["status"] !== "approved") {
-    die("Your account is not approved yet. Please wait for approval.");
+if ($user["status"] === "blocked") {
+    header("Location: ../index.php?route=login&nav=dmstudioai&error=blocked");
+    exit;
 }
 
 // Save user session
