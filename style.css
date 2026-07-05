@@ -1720,3 +1720,130 @@ nav a.active-link {
         grid-template-columns: 1fr;
     }
 }
+
+/* Student Portal Dashboard */
+
+.student-portal-layout {
+    width: 82%;
+    margin: 45px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.student-portal-card {
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(60, 60, 120, 0.08);
+}
+
+.large-student-card {
+    grid-column: span 2;
+}
+
+.student-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.student-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #6554f4, #16c7c7);
+    color: white;
+    font-size: 34px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-portal-card h2 {
+    color: #101340;
+    margin-bottom: 12px;
+}
+
+.student-portal-card p,
+.student-portal-card li {
+    color: #454b6e;
+    line-height: 1.6;
+}
+
+.big-progress-number {
+    font-size: 46px;
+    font-weight: bold;
+    color: #5b5ff5;
+    margin: 18px 0;
+}
+
+.student-skill-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    color: #101340;
+}
+
+.student-task-list {
+    margin-left: 20px;
+}
+
+.student-ai-input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d5d9f2;
+    border-radius: 12px;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.achievement-list,
+.quick-action-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.achievement-list span {
+    background: #f0f3ff;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-weight: bold;
+    color: #101340;
+}
+
+.activity-timeline {
+    display: grid;
+    gap: 16px;
+}
+
+.activity-timeline div {
+    background: #f8f9ff;
+    padding: 18px;
+    border-radius: 16px;
+    border-left: 5px solid #6554f4;
+}
+
+.small-muted-text {
+    color: #7b819f;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .student-portal-layout {
+        width: 92%;
+        grid-template-columns: 1fr;
+    }
+
+    .large-student-card {
+        grid-column: span 1;
+    }
+
+    .student-profile-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
