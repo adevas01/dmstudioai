@@ -5,16 +5,11 @@ session_start();
 // DM Studio AI - Front Controller.
 // This file controls which page is shown based on the route in the URL.
 
-// Example URL:
-// index.php?route=about&nav=dmstudioai
-
-// This navigation token is used to keep your prototype URLs consistent.
-// It is not a security feature.
+// Navigation token used in prototype URLs.
+// This is not a security feature.
 $navToken = "dmstudioai";
 
-// This array stores all allowed website routes.
-// The key is the route name used in the URL.
-// The value is the PHP file that will be loaded.
+// Allowed routes only.
 $routes = [
     // Public pages.
     "home" => "pages/home.php",
@@ -32,13 +27,17 @@ $routes = [
     "users" => "pages/user-management.php",
     "student-profile" => "pages/student-profile.php",
 
+    // Student quick action pages.
+    "lessons" => "pages/lessons.php",
+    "submit-work" => "pages/submit-work.php",
+    "feedback" => "pages/feedback.php",
+
     // Authentication pages.
     "login" => "pages/login.php",
     "register" => "pages/register.php"
 ];
 
-// This array stores the browser tab title for each route.
-// It also helps with accessibility and page identification.
+// Page titles.
 $pageTitles = [
     // Public page titles.
     "home" => "DM Studio AI",
@@ -56,46 +55,38 @@ $pageTitles = [
     "users" => "User Management | DM Studio AI",
     "student-profile" => "Student Profile | DM Studio AI",
 
+    // Student quick action page titles.
+    "lessons" => "Lessons | DM Studio AI",
+    "submit-work" => "Submit Work | DM Studio AI",
+    "feedback" => "Feedback | DM Studio AI",
+
     // Authentication page titles.
     "login" => "Login | DM Studio AI",
     "register" => "Register | DM Studio AI"
 ];
 
-// Get the route from the URL.
-// If there is no route in the URL, use the homepage.
+// Get route from URL, or use home as default.
 $route = $_GET["route"] ?? "home";
 
-// Remove extra spaces from the route.
-// Convert the route to lowercase to avoid route errors.
+// Clean route value.
 $route = strtolower(trim($route));
 
-// Create a variable to check if the requested route is invalid.
-// It starts as false because we assume the route is correct.
+// Track invalid routes.
 $isInvalidRoute = false;
 
-// Check if the requested route exists in the allowed routes array.
-// If it does not exist, send the user to the homepage.
+// If route does not exist, redirect content to home.
 if (!array_key_exists($route, $routes)) {
-    // Change the route to home.
     $route = "home";
-
-    // Mark the route as invalid so we can show a warning message.
     $isInvalidRoute = true;
 }
 
-// Get the correct page title for the selected route.
+// Set page title and page file.
 $pageTitle = $pageTitles[$route];
-
-// Get the correct PHP page file for the selected route.
 $pageFile = $routes[$route];
 
-// Extra safety check.
-// If the selected page file does not exist, do not include it.
+// Safety check for missing page files.
 if (!file_exists($pageFile)) {
-    // Change the page title to Page Not Found.
     $pageTitle = "Page Not Found | DM Studio AI";
-
-    // Set the page file to null so no missing file is included.
     $pageFile = null;
 }
 ?>
@@ -103,39 +94,26 @@ if (!file_exists($pageFile)) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Show the correct page title in the browser tab. -->
     <title><?php echo htmlspecialchars($pageTitle); ?></title>
-
-    <!-- Load the shared head file. -->
-    <!-- This should include meta tags, CSS links, and any shared head settings. -->
     <?php include "includes/head.php"; ?>
 </head>
 
 <body>
 
-<!-- Load the shared header and navigation menu. -->
 <?php include "includes/header.php"; ?>
 
-<!-- Main page content starts here. -->
 <main>
-
-    <!-- If the user entered an invalid route, show a friendly warning. -->
     <?php if ($isInvalidRoute): ?>
         <section class="page-hero">
             <h1>Page Not Found</h1>
-            <p>
-                The page you requested does not exist. You have been redirected to the DM Studio AI homepage.
-            </p>
+            <p>The page you requested does not exist. You have been redirected to the DM Studio AI homepage.</p>
         </section>
     <?php endif; ?>
 
     <?php
-    // If the page file exists, include it here.
     if ($pageFile !== null) {
-        // Load the selected page content.
         include $pageFile;
     } else {
-        // If the page file is missing, show a clear error message.
         echo '
         <section class="page-hero">
             <h1>Page File Missing</h1>
@@ -143,11 +121,8 @@ if (!file_exists($pageFile)) {
         </section>';
     }
     ?>
-
 </main>
-<!-- Main page content ends here. -->
 
-<!-- Load the shared footer. -->
 <?php include "includes/footer.php"; ?>
 
 </body>
