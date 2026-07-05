@@ -1,9 +1,27 @@
 <?php
-// Load authentication helper functions.
+require_once "config/database.php";
 require_once "includes/auth.php";
 
-// Only students can access this feedback page.
 requireRoles(["student"]);
+
+$studentId = $_SESSION["user_id"];
+
+$stmt = $pdo->prepare("
+    SELECT 
+        dm_feedback.feedback_text,
+        dm_feedback.created_at,
+        dm_submissions.title AS submission_title,
+        dm_submissions.status AS submission_status,
+        dm_users.name AS teacher_name
+    FROM dm_feedback
+    INNER JOIN dm_submissions ON dm_feedback.submission_id = dm_submissions.id
+    INNER JOIN dm_users ON dm_feedback.teacher_id = dm_users.id
+    WHERE dm_submissions.student_id = ?
+    ORDER BY dm_feedback.created_at DESC
+");
+
+$stmt->execute([$studentId]);
+$feedbackList = $stmt->fetchAll();
 ?>
 
 <section class="dashboard-hero">
@@ -14,39 +32,39 @@ requireRoles(["student"]);
 <section class="student-portal-layout">
 
     <div class="student-portal-card large-student-card">
-        <h2>Latest Feedback</h2>
-        <p><strong>Teacher:</strong> Digital Media Teacher</p>
-        <p><strong>Project:</strong> Short Video Draft</p>
-        <p>
-            Good progress this week. Your video has a clear structure.
-            Remember to upload your storyboard and check spelling before submitting the final version.
-        </p>
-    </div>
+        <h2>My Feedback</h2>
 
-    <div class="student-portal-card">
-        <h2>What Went Well</h2>
-        <ul class="student-task-list">
-            <li>You used clear clips</li>
-            <li>You followed the project checklist</li>
-            <li>Your video idea is creative</li>
-        </ul>
-    </div>
+        <?php if (empty($feedbackList)): ?>
+            <p>No teacher feedback has been added yet.</p>
+        <?php else: ?>
+            <div class="submission-list">
+                <?php foreach ($feedbackList as $feedback): ?>
+                    <div class="submission-card">
+                        <h3><?php echo htmlspecialchars($feedback["submission_title"]); ?></h3>
 
-    <div class="student-portal-card">
-        <h2>Even Better If</h2>
-        <ul class="student-task-list">
-            <li>Add smoother transitions</li>
-            <li>Check spelling in your titles</li>
-            <li>Make the ending clearer</li>
-        </ul>
-    </div>
+                        <p>
+                            <strong>Teacher:</strong>
+                            <?php echo htmlspecialchars($feedback["teacher_name"]); ?>
+                        </p>
 
-    <div class="student-portal-card">
-        <h2>Next Step</h2>
-        <p>Improve your video draft and submit the final version by Friday.</p>
-        <a href="index.php?route=submit-work&nav=<?php echo $navToken; ?>">
-            <button class="primary-btn small-btn">Submit Improved Work</button>
-        </a>
+                        <p>
+                            <strong>Status:</strong>
+                            <?php echo htmlspecialchars(ucfirst($feedback["submission_status"])); ?>
+                        </p>
+
+                        <p>
+                            <strong>Feedback:</strong>
+                            <?php echo htmlspecialchars($feedback["feedback_text"]); ?>
+                        </p>
+
+                        <p>
+                            <strong>Date:</strong>
+                            <?php echo date("d M Y H:i", strtotime($feedback["created_at"])); ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 
 </section>

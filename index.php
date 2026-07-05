@@ -26,7 +26,7 @@ $routes = [
     // User management pages.
     "users" => "pages/user-management.php",
     "student-profile" => "pages/student-profile.php",
-    "review-submission" => "pages/review-submission.php"
+    "review-submission" => "pages/review-submission.php",
 
     // Student quick action pages.
     "lessons" => "pages/lessons.php",
@@ -55,7 +55,7 @@ $pageTitles = [
     // User management page titles.
     "users" => "User Management | DM Studio AI",
     "student-profile" => "Student Profile | DM Studio AI",
-    "review-submission" => "Review Submission | DM Studio AI"
+    "review-submission" => "Review Submission | DM Studio AI",
 
     // Student quick action page titles.
     "lessons" => "Lessons | DM Studio AI",
