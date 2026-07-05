@@ -174,6 +174,10 @@ $totalSubmissions = count($submissions);
                                 View uploaded file
                             </a>
                         <?php endif; ?>
+                        <br>
+                        <a href="index.php?route=review-submission&id=<?php echo (int) $submission["id"]; ?>&nav=<?php echo $navToken; ?>">
+                            <button class="primary-btn small-btn">Review Submission</button>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
