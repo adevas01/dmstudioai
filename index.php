@@ -14,8 +14,14 @@ $routes = [
     "courses" => "pages/courses.php",
     "tools" => "pages/tools.php",
     "about" => "pages/about.php",
+
+    // Dashboard pages
     "student" => "pages/student-dashboard.php",
-    "teacher" => "pages/teacher-dashboard.php"
+    "teacher" => "pages/teacher-dashboard.php",
+
+    // Authentication pages
+    "login" => "pages/login.php",
+    "register" => "pages/register.php"
 ];
 
 // Page titles for browser tab and accessibility.
@@ -24,8 +30,14 @@ $pageTitles = [
     "courses" => "Courses | DM Studio AI",
     "tools" => "Tools | DM Studio AI",
     "about" => "About | DM Studio AI",
+
+    // Dashboard page titles
     "student" => "Student Dashboard | DM Studio AI",
-    "teacher" => "Teacher Dashboard | DM Studio AI"
+    "teacher" => "Teacher Dashboard | DM Studio AI",
+
+    // Authentication page titles
+    "login" => "Login | DM Studio AI",
+    "register" => "Register | DM Studio AI"
 ];
 
 // Get route from URL.
