@@ -46,12 +46,15 @@ if (!$student) {
 
     <div class="dashboard-card large-card">
         <h2>Student Details</h2>
+
         <p><strong>Email:</strong> <?php echo htmlspecialchars($student["email"]); ?></p>
+
         <p><strong>Status:</strong>
             <span class="status-badge status-<?php echo htmlspecialchars($student["status"]); ?>">
                 <?php echo htmlspecialchars(ucfirst($student["status"])); ?>
             </span>
         </p>
+
         <p><strong>Registered:</strong> <?php echo date("d M Y", strtotime($student["created_at"])); ?></p>
 
         <a href="index.php?route=teacher&nav=<?php echo $navToken; ?>">
@@ -85,12 +88,12 @@ if (!$student) {
 
     <div class="dashboard-card">
         <h2>Teacher Notes</h2>
-        <p>Notes and feedback will be added here later.</p>
+        <p>Teacher notes and feedback will be added here later.</p>
     </div>
 
     <div class="dashboard-card">
         <h2>Submitted Work</h2>
-        <p>Student work submissions will appear here in the next development stage.</p>
+        <p>Student submitted work will appear here in the next development stage.</p>
     </div>
 
 </section>

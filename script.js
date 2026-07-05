@@ -136,3 +136,14 @@ if (studentSelect && studentPreview) {
         studentPreview.classList.remove("hidden-preview");
     });
 }
+
+function openStudentProfile() {
+    const select = document.getElementById("studentProfileSelect");
+
+    if (!select || select.value === "") {
+        alert("Please choose a student first.");
+        return;
+    }
+
+    window.location.href = select.value;
+}

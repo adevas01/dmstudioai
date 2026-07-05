@@ -1647,3 +1647,76 @@ nav a.active-link {
         grid-template-columns: 1fr;
     }
 }
+
+/* Improved teacher student selector */
+
+.student-progress-panel {
+    margin-top: 24px;
+    background: #f8f9ff;
+    border: 1px solid #e1e5f5;
+    padding: 28px;
+    border-radius: 22px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.student-select-area {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.student-select-area label {
+    font-weight: bold;
+    color: #101340;
+}
+
+.student-select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #d5d9f2;
+    border-radius: 14px;
+    font-size: 16px;
+    background: white;
+    color: #101340;
+}
+
+.student-progress-info {
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+}
+
+.student-progress-info h3 {
+    color: #101340;
+    margin-bottom: 12px;
+}
+
+.student-progress-info ul {
+    margin-left: 20px;
+    color: #454b6e;
+    line-height: 1.8;
+}
+
+.mini-progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e2e5f5;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 8px 0 18px;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6554f4, #16c7c7);
+    border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+    .student-progress-panel {
+        grid-template-columns: 1fr;
+    }
+}
