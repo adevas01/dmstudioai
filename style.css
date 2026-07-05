@@ -1246,3 +1246,227 @@ nav a.active-link {
         align-items: flex-start;
     }
 }
+
+/* Clean User Management Page */
+
+.user-admin-page {
+    width: 82%;
+    margin: 45px auto;
+}
+
+.user-admin-header {
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(60, 60, 120, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 28px;
+}
+
+.user-admin-header h2 {
+    font-size: 30px;
+    color: #101340;
+    margin-bottom: 8px;
+}
+
+.user-admin-header p {
+    color: #454b6e;
+    line-height: 1.6;
+}
+
+.back-link {
+    text-decoration: none;
+    background: white;
+    border: 2px solid #d5d9f2;
+    color: #101340;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.user-card-list {
+    display: grid;
+    gap: 20px;
+}
+
+.user-card {
+    background: white;
+    padding: 26px;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(60, 60, 120, 0.08);
+    display: grid;
+    grid-template-columns: 1.4fr 1.2fr 1.4fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.user-main-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6554f4, #16c7c7);
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-main-info h3 {
+    color: #101340;
+    margin-bottom: 5px;
+}
+
+.user-main-info p {
+    color: #454b6e;
+    font-size: 15px;
+}
+
+.user-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-badge,
+.role-badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-blocked {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.role-student {
+    background: #e7f0ff;
+    color: #1f4f9f;
+}
+
+.role-teacher {
+    background: #e9ddff;
+    color: #4c2b8a;
+}
+
+.role-manager {
+    background: #dff9f6;
+    color: #0f766e;
+}
+
+.role-owner {
+    background: #ffe4d6;
+    color: #9a3412;
+}
+
+.date-text {
+    color: #7b819f;
+    font-size: 14px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.status-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-form select {
+    padding: 11px 12px;
+    border: 2px solid #d5d9f2;
+    border-radius: 12px;
+    background: white;
+    color: #101340;
+    font-weight: 600;
+}
+
+.danger-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.danger-btn:hover {
+    background: #bb2d3b;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px 18px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.empty-state {
+    background: white;
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(60, 60, 120, 0.08);
+    text-align: center;
+}
+
+.empty-state h3 {
+    color: #101340;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #454b6e;
+}
+
+.muted-text {
+    color: #7b819f;
+    font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+    .user-card {
+        grid-template-columns: 1fr;
+    }
+
+    .user-actions {
+        justify-content: flex-start;
+    }
+
+    .user-admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
