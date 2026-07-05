@@ -945,3 +945,26 @@ nav a.active-link {
     transform: translateY(-18px) scale(1.04);
     box-shadow: 0 30px 70px rgba(101, 84, 244, 0.35);
 }
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.auth-form label {
+    font-weight: bold;
+    color: #101340;
+}
+
+.auth-form input,
+.auth-form select {
+    padding: 14px;
+    border: 2px solid #d5d9f2;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.auth-form button {
+    margin-top: 10px;
+}
