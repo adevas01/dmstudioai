@@ -1470,3 +1470,36 @@ nav a.active-link {
         align-items: flex-start;
     }
 }
+
+/* Teacher student list */
+
+.teacher-student-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.teacher-student-card {
+    background: #f8f9ff;
+    border: 1px solid #e1e5f5;
+    padding: 18px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.teacher-student-card h3 {
+    color: #101340;
+    margin-bottom: 5px;
+}
+
+.teacher-student-card p {
+    color: #454b6e;
+    margin-bottom: 5px;
+}
+
+.teacher-student-card small {
+    color: #7b819f;
+}
