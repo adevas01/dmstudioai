@@ -2,23 +2,17 @@
 
 console.log("DM Studio AI animations loaded.");
 
+// --------------------------------------------------
 // Button interactions
-const startButton = document.querySelector(".primary-btn");
-const demoButton = document.querySelector(".secondary-btn");
+// --------------------------------------------------
+// The old alert messages were removed.
+// Buttons should now navigate normally or perform their real actions.
+// This prevents dashboard buttons from showing unwanted pop-up messages.
 
-if (startButton) {
-    startButton.addEventListener("click", function () {
-        alert("Welcome to DM Studio AI! The learning area will be added soon.");
-    });
-}
 
-if (demoButton) {
-    demoButton.addEventListener("click", function () {
-        alert("Demo coming soon. This will show how the AI learning assistant works.");
-    });
-}
-
-// Typing effect for AI Assistant
+// --------------------------------------------------
+// Typing effect for AI Assistant card
+// --------------------------------------------------
 const aiText = document.querySelector(".card-one p");
 
 if (aiText) {
@@ -38,9 +32,12 @@ if (aiText) {
     setTimeout(typeMessage, 600);
 }
 
+
+// --------------------------------------------------
 // Scroll reveal animation
+// --------------------------------------------------
 const revealElements = document.querySelectorAll(
-    ".feature-card, .learning-card, .page-card, .dashboard-card, .testimonial, .about-section"
+    ".feature-card, .learning-card, .page-card, .dashboard-card, .testimonial, .about-section, .user-card, .user-admin-header"
 );
 
 if (revealElements.length > 0) {
@@ -63,7 +60,10 @@ if (revealElements.length > 0) {
     });
 }
 
+
+// --------------------------------------------------
 // Animated dashboard progress bar
+// --------------------------------------------------
 const progressFill = document.querySelector(".progress-fill");
 
 if (progressFill) {
@@ -74,7 +74,10 @@ if (progressFill) {
     }, 500);
 }
 
+
+// --------------------------------------------------
 // Futuristic mouse glow effect
+// --------------------------------------------------
 const glow = document.createElement("div");
 glow.classList.add("mouse-glow");
 document.body.appendChild(glow);
@@ -84,7 +87,10 @@ document.addEventListener("mousemove", function (event) {
     glow.style.top = event.clientY + "px";
 });
 
-// Add visible animation classes to hero elements
+
+// --------------------------------------------------
+// Hero robot animations
+// --------------------------------------------------
 const robot = document.querySelector(".robot");
 const floatingCards = document.querySelectorAll(".floating-card");
 
@@ -96,12 +102,16 @@ floatingCards.forEach(function (card) {
     card.classList.add("animated-floating-card");
 });
 
+
+// --------------------------------------------------
 // Active navigation highlight
+// --------------------------------------------------
 const currentRoute = new URLSearchParams(window.location.search).get("route");
 const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach(function (link) {
-    const linkRoute = new URL(link.href).searchParams.get("route");
+    const linkUrl = new URL(link.href);
+    const linkRoute = linkUrl.searchParams.get("route");
 
     if (currentRoute && currentRoute === linkRoute) {
         link.classList.add("active-link");
@@ -112,7 +122,28 @@ navLinks.forEach(function (link) {
     }
 });
 
-// Teacher dashboard student dropdown preview
+
+// --------------------------------------------------
+// Teacher dashboard: open selected student profile
+// --------------------------------------------------
+function openStudentProfile() {
+    const select = document.getElementById("studentProfileSelect");
+
+    if (!select || select.value === "") {
+        alert("Please choose a student first.");
+        return;
+    }
+
+    window.location.href = select.value;
+}
+
+
+// --------------------------------------------------
+// Optional older student preview system
+// --------------------------------------------------
+// This is kept for compatibility only.
+// If the page does not use studentSelect/studentPreview, it will do nothing.
+
 const studentSelect = document.getElementById("studentSelect");
 const studentPreview = document.getElementById("studentPreview");
 
@@ -125,25 +156,33 @@ if (studentSelect && studentPreview) {
             return;
         }
 
-        document.getElementById("previewName").textContent = selectedOption.dataset.name;
-        document.getElementById("previewEmail").textContent = selectedOption.dataset.email;
-        document.getElementById("previewStatus").textContent = selectedOption.dataset.status;
-        document.getElementById("previewDate").textContent = selectedOption.dataset.date;
+        const previewName = document.getElementById("previewName");
+        const previewEmail = document.getElementById("previewEmail");
+        const previewStatus = document.getElementById("previewStatus");
+        const previewDate = document.getElementById("previewDate");
+        const profileLink = document.getElementById("profileLink");
 
-        document.getElementById("profileLink").href =
-            "index.php?route=student-profile&id=" + studentSelect.value + "&nav=dmstudioai";
+        if (previewName) {
+            previewName.textContent = selectedOption.dataset.name;
+        }
+
+        if (previewEmail) {
+            previewEmail.textContent = selectedOption.dataset.email;
+        }
+
+        if (previewStatus) {
+            previewStatus.textContent = selectedOption.dataset.status;
+        }
+
+        if (previewDate) {
+            previewDate.textContent = selectedOption.dataset.date;
+        }
+
+        if (profileLink) {
+            profileLink.href =
+                "index.php?route=student-profile&id=" + studentSelect.value + "&nav=dmstudioai";
+        }
 
         studentPreview.classList.remove("hidden-preview");
     });
-}
-
-function openStudentProfile() {
-    const select = document.getElementById("studentProfileSelect");
-
-    if (!select || select.value === "") {
-        alert("Please choose a student first.");
-        return;
-    }
-
-    window.location.href = select.value;
 }
