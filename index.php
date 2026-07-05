@@ -1,4 +1,5 @@
 <?php
+session_start();
 // DM Studio AI - Front Controller
 // All pages are loaded through index.php using the route parameter.
 // Example: index.php?route=about&nav=dmstudioai
