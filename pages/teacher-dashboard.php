@@ -61,12 +61,50 @@ $students = $stmt->fetchAll();
         <?php endif; ?>
     </div>
 
-    <div class="dashboard-card">
+    <div class="dashboard-card large-card">
         <h2>Student Progress</h2>
-        <p>Video Editing: 75%</p>
-        <p>Graphic Design: 45%</p>
-        <p>Animation: 30%</p>
-        <p>Digital Storytelling: 60%</p>
+        <p>View registered students and check their learning progress.</p>
+
+        <?php if (empty($students)): ?>
+            <p>No students registered yet.</p>
+        <?php else: ?>
+            <div class="progress-student-list">
+                <?php foreach ($students as $student): ?>
+                    <div class="progress-student-card">
+                        <div class="progress-student-info">
+                            <h3><?php echo htmlspecialchars($student["name"]); ?></h3>
+                            <p><?php echo htmlspecialchars($student["email"]); ?></p>
+
+                            <span class="status-badge status-<?php echo htmlspecialchars($student["status"]); ?>">
+                                <?php echo htmlspecialchars(ucfirst($student["status"])); ?>
+                            </span>
+                        </div>
+
+                        <div class="student-progress-details">
+                            <p><strong>Video Editing:</strong> 75%</p>
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 75%;"></div>
+                            </div>
+
+                            <p><strong>Graphic Design:</strong> 45%</p>
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 45%;"></div>
+                            </div>
+
+                            <p><strong>Animation:</strong> 30%</p>
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 30%;"></div>
+                            </div>
+
+                            <p><strong>Digital Storytelling:</strong> 60%</p>
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 
     <div class="dashboard-card">
