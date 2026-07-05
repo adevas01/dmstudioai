@@ -11,7 +11,11 @@
         <a href="index.php?route=about&nav=<?php echo $navToken; ?>">About</a>
         <a href="index.php?route=student&nav=<?php echo $navToken; ?>">Student</a>
         <a href="index.php?route=teacher&nav=<?php echo $navToken; ?>">Teacher</a>
+        <a href="index.php?route=login&nav=<?php echo $navToken; ?>">Login</a>
+        <a href="index.php?route=register&nav=<?php echo $navToken; ?>">Register</a>
     </nav>
 
-    <button class="top-btn">Get Started</button>
+    <a href="index.php?route=register&nav=<?php echo $navToken; ?>">
+        <button class="top-btn">Get Started</button>
+    </a>
 </header>
