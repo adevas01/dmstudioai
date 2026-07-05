@@ -4,15 +4,16 @@
 require_once "config/database.php";
 
 // Load the authentication helper functions.
-// This gives access to functions like requireRoles().
+// This gives this page access to functions such as requireRoles().
 require_once "includes/auth.php";
 
-// Only allow teachers, managers, and the owner to view this page.
-// Students and visitors cannot access the teacher dashboard.
+// Only teachers, managers, and the owner can access this dashboard.
+// Students and visitors are not allowed to view this page.
 requireRoles(["teacher", "manager", "owner"]);
 
 // Prepare a database query to get all registered students.
-// We only select students who have not been soft-deleted.
+// We only show users with the student role.
+// We also ignore soft-deleted users.
 $stmt = $pdo->prepare("
     SELECT id, name, email, status, created_at
     FROM dm_users
@@ -24,8 +25,35 @@ $stmt = $pdo->prepare("
 // Run the database query.
 $stmt->execute();
 
-// Store all student records in the $students array.
+// Store all students from the database in the $students array.
 $students = $stmt->fetchAll();
+
+// Count the number of registered students.
+$totalStudents = count($students);
+
+// Count approved students.
+$approvedStudents = 0;
+
+// Count pending students.
+$pendingStudents = 0;
+
+// Count blocked students.
+$blockedStudents = 0;
+
+// Loop through the students and count their status.
+foreach ($students as $student) {
+    if ($student["status"] === "approved") {
+        $approvedStudents++;
+    }
+
+    if ($student["status"] === "pending") {
+        $pendingStudents++;
+    }
+
+    if ($student["status"] === "blocked") {
+        $blockedStudents++;
+    }
+}
 ?>
 
 <!-- Main teacher dashboard banner -->
@@ -41,71 +69,83 @@ $students = $stmt->fetchAll();
     <div class="dashboard-card large-card">
         <h2>Class Overview</h2>
 
-        <!-- Example class/group information -->
+        <!-- Example group information -->
         <p><strong>Group:</strong> SEND Level 1 Digital Media</p>
 
-        <!-- Shows the number of registered students from the database -->
-        <p><strong>Registered students:</strong> <?php echo count($students); ?></p>
+        <!-- Number of students found in the database -->
+        <p><strong>Registered students:</strong> <?php echo $totalStudents; ?></p>
 
-        <!-- Example current learning unit -->
+        <!-- Example current unit -->
         <p><strong>Current unit:</strong> Video Editing</p>
 
-        <!-- Link to the user management page where teachers can manage students -->
+        <!-- Link to the user management page -->
         <a href="index.php?route=users&nav=<?php echo $navToken; ?>">
             <button class="primary-btn small-btn">Manage Students</button>
         </a>
     </div>
 
-    <!-- Student progress card -->
+    <!-- Student account summary card -->
+    <div class="dashboard-card">
+        <h2>Student Accounts</h2>
+
+        <!-- Summary of student account statuses -->
+        <p><strong>Approved:</strong> <?php echo $approvedStudents; ?></p>
+        <p><strong>Pending:</strong> <?php echo $pendingStudents; ?></p>
+        <p><strong>Blocked:</strong> <?php echo $blockedStudents; ?></p>
+    </div>
+
+    <!-- Student progress selector card -->
     <div class="dashboard-card large-card">
         <h2>Student Progress</h2>
 
-        <!-- Instruction for the teacher -->
+        <!-- Short instruction for the teacher -->
         <p>Select a registered student and open their learning profile.</p>
 
-        <!-- If there are no students in the database, show a message -->
+        <!-- Show this message if no students are registered -->
         <?php if (empty($students)): ?>
+
             <p>No students registered yet.</p>
 
-        <!-- If there are students, show the dropdown selector -->
         <?php else: ?>
 
-            <!-- Student selection panel -->
+            <!-- Student profile selector panel -->
             <div class="student-progress-panel">
 
-                <!-- Left side: dropdown and button -->
+                <!-- Left side: dropdown and profile button -->
                 <div class="student-select-area">
 
                     <!-- Label for accessibility -->
                     <label for="studentProfileSelect">Choose student</label>
 
-                    <!-- Dropdown list of students -->
+                    <!-- Dropdown list of registered students -->
                     <select id="studentProfileSelect" class="student-select">
 
-                        <!-- Default option before the teacher chooses a student -->
+                        <!-- Default dropdown option -->
                         <option value="">Select a student...</option>
 
-                        <!-- Loop through each student from the database -->
+                        <!-- Loop through each student and create one option for each -->
                         <?php foreach ($students as $student): ?>
 
-                            <!-- Each option stores the link to that student's profile page -->
+                            <!-- The value contains the student profile link -->
                             <option value="index.php?route=student-profile&id=<?php echo (int) $student["id"]; ?>&nav=<?php echo $navToken; ?>">
                                 <?php echo htmlspecialchars($student["name"]); ?> — <?php echo htmlspecialchars(ucfirst($student["status"])); ?>
                             </option>
 
                         <?php endforeach; ?>
+
                     </select>
 
-                    <!-- Button that opens the selected student's profile using JavaScript -->
+                    <!-- This button uses JavaScript to open the selected student profile -->
                     <button type="button" class="primary-btn small-btn" onclick="openStudentProfile()">
                         View Student Profile
                     </button>
                 </div>
 
-                <!-- Right side: explanation of what the teacher can access -->
+                <!-- Right side: explanation of the student profile -->
                 <div class="student-progress-info">
-                    <h3>What the teacher can see</h3>
+                    <h3>Student profile includes</h3>
 
+                    <!-- Simple list explaining what the teacher can see -->
                     <ul>
                         <li>Student account status</li>
                         <li>Registration date</li>
@@ -114,6 +154,7 @@ $students = $stmt->fetchAll();
                         <li>Submitted work area</li>
                     </ul>
                 </div>
+
             </div>
 
         <?php endif; ?>
@@ -123,8 +164,8 @@ $students = $stmt->fetchAll();
     <div class="dashboard-card">
         <h2>Support Alerts</h2>
 
-        <!-- These are example alerts for now -->
-        <!-- Later, these can come from the database -->
+        <!-- Example support alerts for the prototype -->
+        <!-- Later these alerts can come from the database -->
         <ul>
             <li>2 students need help with planning</li>
             <li>1 student has not submitted work</li>
