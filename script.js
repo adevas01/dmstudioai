@@ -111,3 +111,28 @@ navLinks.forEach(function (link) {
         link.classList.add("active-link");
     }
 });
+
+// Teacher dashboard student dropdown preview
+const studentSelect = document.getElementById("studentSelect");
+const studentPreview = document.getElementById("studentPreview");
+
+if (studentSelect && studentPreview) {
+    studentSelect.addEventListener("change", function () {
+        const selectedOption = studentSelect.options[studentSelect.selectedIndex];
+
+        if (!studentSelect.value) {
+            studentPreview.classList.add("hidden-preview");
+            return;
+        }
+
+        document.getElementById("previewName").textContent = selectedOption.dataset.name;
+        document.getElementById("previewEmail").textContent = selectedOption.dataset.email;
+        document.getElementById("previewStatus").textContent = selectedOption.dataset.status;
+        document.getElementById("previewDate").textContent = selectedOption.dataset.date;
+
+        document.getElementById("profileLink").href =
+            "index.php?route=student-profile&id=" + studentSelect.value + "&nav=dmstudioai";
+
+        studentPreview.classList.remove("hidden-preview");
+    });
+}

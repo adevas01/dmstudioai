@@ -1596,3 +1596,54 @@ nav a.active-link {
         grid-template-columns: 1fr;
     }
 }
+
+/* Teacher dashboard student dropdown */
+
+.student-selector-box {
+    margin-top: 22px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.student-select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #d5d9f2;
+    border-radius: 14px;
+    font-size: 16px;
+    color: #101340;
+    background: white;
+}
+
+.student-preview {
+    background: #f8f9ff;
+    border: 1px solid #e1e5f5;
+    padding: 24px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 28px;
+    margin-top: 20px;
+}
+
+.hidden-preview {
+    display: none;
+}
+
+.student-preview h3 {
+    color: #101340;
+    margin-bottom: 6px;
+}
+
+.student-preview p {
+    color: #454b6e;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+    .student-preview {
+        grid-template-columns: 1fr;
+    }
+}

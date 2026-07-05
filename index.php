@@ -23,8 +23,9 @@ $routes = [
     "manager" => "pages/manager-dashboard.php",
     "owner" => "pages/owner-dashboard.php",
 
-    // User management page
+    // User management pages
     "users" => "pages/user-management.php",
+    "student-profile" => "pages/student-profile.php",
 
     // Authentication pages
     "login" => "pages/login.php",
@@ -44,8 +45,9 @@ $pageTitles = [
     "manager" => "Manager Dashboard | DM Studio AI",
     "owner" => "Owner Dashboard | DM Studio AI",
 
-    // User management page title
+    // User management page titles
     "users" => "User Management | DM Studio AI",
+    "student-profile" => "Student Profile | DM Studio AI",
 
     // Authentication page titles
     "login" => "Login | DM Studio AI",
