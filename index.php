@@ -25,6 +25,12 @@ $routes = [
 
     // Teacher task pages.
     "create-task" => "pages/create-task.php",
+    "view-tasks" => "pages/view-tasks.php",
+    "assign-task" => "pages/assign-task.php",
+
+    // Student task pages.
+    "my-tasks" => "pages/my-tasks.php",
+    "student-task" => "pages/student-task.php",
 
     // User management pages.
     "users" => "pages/user-management.php",
@@ -57,6 +63,12 @@ $pageTitles = [
 
     // Teacher task page titles.
     "create-task" => "Create Task | DM Studio AI",
+    "view-tasks" => "View Tasks | DM Studio AI",
+    "assign-task" => "Assign Task | DM Studio AI",
+
+    // Student task page titles.
+    "my-tasks" => "My Tasks | DM Studio AI",
+    "student-task" => "Student Task | DM Studio AI",
 
     // User management page titles.
     "users" => "User Management | DM Studio AI",

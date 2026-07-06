@@ -37,6 +37,27 @@ if (!$student) {
     return;
 }
 
+// Get assigned tasks for this student.
+$tasksStmt = $pdo->prepare("
+    SELECT 
+        tasks.id,
+        tasks.title,
+        tasks.description,
+        tasks.task_type,
+        tasks.recommended_tool,
+        tasks.deadline,
+        task_assignments.status,
+        task_assignments.assigned_at
+    FROM task_assignments
+    INNER JOIN tasks ON task_assignments.task_id = tasks.id
+    WHERE task_assignments.student_id = ?
+    ORDER BY task_assignments.assigned_at DESC
+");
+
+$tasksStmt->execute([$studentId]);
+
+$assignedTasks = $tasksStmt->fetchAll();
+
 // Student details.
 $studentName = $student["name"];
 $studentEmail = $student["email"];
@@ -138,11 +159,55 @@ $averageProgress = round(($videoProgress + $designProgress + $animationProgress 
     <div class="student-portal-card">
         <h2>Today’s Tasks</h2>
 
-        <ul class="student-task-list">
-            <li>Watch the video editing tutorial</li>
-            <li>Complete the project checklist</li>
-            <li>Upload one short video draft</li>
-        </ul>
+        <?php if (empty($assignedTasks)): ?>
+
+            <p>No tasks assigned yet.</p>
+            <p class="small-muted-text">
+                Your teacher will add activities here when they are ready.
+            </p>
+
+        <?php else: ?>
+
+            <div class="student-task-list">
+
+                <?php foreach ($assignedTasks as $task): ?>
+                    <div class="student-task-item">
+
+                        <h3><?php echo htmlspecialchars($task["title"]); ?></h3>
+
+                        <p>
+                            <?php echo htmlspecialchars($task["description"]); ?>
+                        </p>
+
+                        <?php if (!empty($task["recommended_tool"])): ?>
+                            <p>
+                                <strong>Tool:</strong>
+                                <?php echo htmlspecialchars($task["recommended_tool"]); ?>
+                            </p>
+                        <?php endif; ?>
+
+                        <?php if (!empty($task["deadline"])): ?>
+                            <p>
+                                <strong>Deadline:</strong>
+                                <?php echo htmlspecialchars(date("d M Y", strtotime($task["deadline"]))); ?>
+                            </p>
+                        <?php endif; ?>
+
+                        <p>
+                            <strong>Status:</strong>
+                            <?php echo htmlspecialchars(ucfirst($task["status"])); ?>
+                        </p>
+
+                        <a href="index.php?route=student-task&id=<?php echo htmlspecialchars($task["id"]); ?>&nav=<?php echo $navToken; ?>">
+                            <button class="primary-btn small-btn">Open Task</button>
+                        </a>
+
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+
+        <?php endif; ?>
     </div>
 
     <div class="student-portal-card">
