@@ -23,6 +23,9 @@ $routes = [
     "manager" => "pages/manager-dashboard.php",
     "owner" => "pages/owner-dashboard.php",
 
+    // Teacher task pages.
+    "create-task" => "pages/create-task.php",
+
     // User management pages.
     "users" => "pages/user-management.php",
     "student-profile" => "pages/student-profile.php",
@@ -51,6 +54,9 @@ $pageTitles = [
     "teacher" => "Teacher Dashboard | DM Studio AI",
     "manager" => "Manager Dashboard | DM Studio AI",
     "owner" => "Owner Dashboard | DM Studio AI",
+
+    // Teacher task page titles.
+    "create-task" => "Create Task | DM Studio AI",
 
     // User management page titles.
     "users" => "User Management | DM Studio AI",

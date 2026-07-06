@@ -198,8 +198,10 @@ $totalSubmissions = count($submissions);
         <h2>Create Activity</h2>
 
         <p>Create a SEND-friendly task with simple steps and success criteria.</p>
-
-        <button class="primary-btn small-btn">Create Task</button>
+  
+        <a href="index.php?route=create-task&nav=<?php echo $navToken; ?>">
+         <button class="top-btn">Create Task</button>
+        </a>
     </div>
 
 </section>

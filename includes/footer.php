@@ -1,19 +1,14 @@
-<footer class="dm-footer"> 
+<footer class="dm-footer">
 
     <div class="dm-footer-inner">
 
         <!-- Brand Column -->
         <div class="footer-brand">
-            <div class="footer-logo-wrapper">
-                <!--<div class="footer-logo">DM</div>-->
+            <h3><span>DM</span> Studio AI</h3>
 
-                <div>
-                    <h3><span>DM</span> Studio AI</h3>
-                    <p class="footer-tagline">
-                        Digital media learning support for SEND students.
-                    </p>
-                </div>
-            </div>
+            <p class="footer-tagline">
+                Digital media learning support for SEND students.
+            </p>
 
             <div class="footer-divider"></div>
 
@@ -65,43 +60,55 @@
             <div class="footer-divider small"></div>
 
             <nav class="footer-nav footer-social-nav">
+
                 <a href="https://www.capitalccg.ac.uk/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/capital-city-college.png"
-                         alt=""
-                         class="footer-social-logo footer-college-logo">
+                    <span class="footer-logo-box">
+                        <img src="images/capital-city-college-mark.png?v=3"
+                             alt="Capital City College logo"
+                             class="footer-social-logo">
+                    </span>
                     <span>Capital City College</span>
                 </a>
 
                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/instagram.png"
-                         alt=""
-                         class="footer-social-logo">
+                    <span class="footer-logo-box">
+                        <img src="images/instagram.png?v=3"
+                             alt="Instagram logo"
+                             class="footer-social-logo">
+                    </span>
                     <span>Instagram</span>
                 </a>
 
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/facebook.png"
-                         alt=""
-                         class="footer-social-logo">
+                    <span class="footer-logo-box">
+                        <img src="images/facebook.png?v=3"
+                             alt="Facebook logo"
+                             class="footer-social-logo">
+                    </span>
                     <span>Facebook</span>
                 </a>
 
                 <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/linkedin.png"
-                         alt=""
-                         class="footer-social-logo">
+                    <span class="footer-logo-box">
+                        <img src="images/linkedin.png?v=3"
+                             alt="LinkedIn logo"
+                             class="footer-social-logo">
+                    </span>
                     <span>LinkedIn</span>
                 </a>
+
             </nav>
         </div>
 
     </div>
 
-    <!-- Bottom Copyright Bar -->
+    <!-- Bottom Bar -->
     <div class="footer-bottom">
-        <p>© 2026 DM Studio AI</p>
-        <p class="footer-heart">♡ Built with care for SEND learners</p>
-        <p>All rights reserved.</p>
+        <p>
+            © 2026 DM Studio AI.
+            <span class="footer-heart">♡ Built with care for SEND learners.</span>
+            All rights reserved.
+        </p>
     </div>
 
 </footer>

@@ -8,8 +8,41 @@
         </p>
 
         <div class="hero-buttons">
-            <button class="primary-btn">Start Learning</button>
-            <button class="secondary-btn">See Demo</button>
+
+            <?php
+                $allowedDashboardRoles = ["student", "teacher", "manager", "owner"];
+                $dashboardRoute = null;
+
+                if (
+                    isset($_SESSION["user_id"]) &&
+                    isset($_SESSION["role"]) &&
+                    in_array($_SESSION["role"], $allowedDashboardRoles, true)
+                ) {
+                    $dashboardRoute = $_SESSION["role"];
+                }
+            ?>
+
+            <?php if ($dashboardRoute !== null): ?>
+
+                <a href="index.php?route=<?php echo htmlspecialchars($dashboardRoute); ?>&nav=<?php echo $navToken; ?>" 
+                   class="primary-btn">
+                    Start Learning
+                </a>
+
+            <?php else: ?>
+
+                <a href="index.php?route=register&nav=<?php echo $navToken; ?>" 
+                   class="primary-btn">
+                    Start Learning
+                </a>
+
+            <?php endif; ?>
+
+            <a href="index.php?route=tools&nav=<?php echo $navToken; ?>" 
+               class="secondary-btn">
+                Explore Tools
+            </a>
+
         </div>
 
         <div class="small-tags">
