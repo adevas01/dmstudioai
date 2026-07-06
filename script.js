@@ -241,3 +241,63 @@ deleteForms.forEach(function (form) {
         }
     });
 });
+
+// ====================================================
+// HAMBURGER MENU TOGGLE
+// ====================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("navMenu");
+    const body = document.body;
+
+    // Stop if the header menu does not exist on this page
+    if (!hamburger || !navMenu) {
+        return;
+    }
+
+    function openMenu() {
+        navMenu.classList.add("open");
+        hamburger.classList.add("active");
+        hamburger.setAttribute("aria-expanded", "true");
+        body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove("open");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        body.style.overflow = "";
+    }
+
+    hamburger.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        if (navMenu.classList.contains("open")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    navMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (event) {
+        if (
+            navMenu.classList.contains("open") &&
+            !navMenu.contains(event.target) &&
+            !hamburger.contains(event.target)
+        ) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && navMenu.classList.contains("open")) {
+            closeMenu();
+            hamburger.focus();
+        }
+    });
+});
