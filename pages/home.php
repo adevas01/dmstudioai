@@ -31,7 +31,7 @@
 
             <?php else: ?>
 
-                <a href="index.php?route=register&nav=<?php echo $navToken; ?>" 
+                <a href="index.php?route=intro-lesson&nav=<?php echo $navToken; ?>" 
                    class="primary-btn">
                     Start Learning
                 </a>

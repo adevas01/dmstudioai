@@ -7,4 +7,4 @@
 <link rel="shortcut icon" href="images/favicon.ico?v=4">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=4">
 
-<link rel="stylesheet" href="style.css?v=31"
+<link rel="stylesheet" href="style.css?v=43"

@@ -1,4 +1,4 @@
-<?php
+<?php 
 // Start the PHP session so the website can remember logged-in users.
 session_start();
 
@@ -9,6 +9,9 @@ session_start();
 // This is not a security feature.
 $navToken = "dmstudioai";
 
+// Project root folder.
+$rootPath = __DIR__;
+
 // Allowed routes only.
 $routes = [
     // Public pages.
@@ -16,6 +19,10 @@ $routes = [
     "courses" => "pages/courses.php",
     "tools" => "pages/tools.php",
     "about" => "pages/about.php",
+    "intro-lesson" => "pages/intro-lesson.php",
+
+    // Privacy and security page.
+    "privacy-security" => "security/privacy-security.php",
 
     // Dashboard pages.
     "student" => "pages/student-dashboard.php",
@@ -54,6 +61,10 @@ $pageTitles = [
     "courses" => "Courses | DM Studio AI",
     "tools" => "Tools | DM Studio AI",
     "about" => "About | DM Studio AI",
+    "intro-lesson" => "pages/intro-lesson.php",
+
+    // Privacy and security page title.
+    "privacy-security" => "Privacy & Security | DM Studio AI",
 
     // Dashboard page titles.
     "student" => "Student Dashboard | DM Studio AI",
@@ -91,23 +102,26 @@ $route = $_GET["route"] ?? "home";
 // Clean route value.
 $route = strtolower(trim($route));
 
-// Track invalid routes.
+// Track errors.
 $isInvalidRoute = false;
+$isMissingFile = false;
 
-// If route does not exist, redirect content to home.
+// If route does not exist, show page not found message.
 if (!array_key_exists($route, $routes)) {
-    $route = "home";
     $isInvalidRoute = true;
-}
-
-// Set page title and page file.
-$pageTitle = $pageTitles[$route];
-$pageFile = $routes[$route];
-
-// Safety check for missing page files.
-if (!file_exists($pageFile)) {
     $pageTitle = "Page Not Found | DM Studio AI";
     $pageFile = null;
+} else {
+    // Set page title and page file.
+    $pageTitle = $pageTitles[$route] ?? "DM Studio AI";
+    $pageFile = $rootPath . "/" . $routes[$route];
+
+    // Safety check for missing page files.
+    if (!file_exists($pageFile)) {
+        $isMissingFile = true;
+        $pageTitle = "Page File Missing | DM Studio AI";
+        $pageFile = null;
+    }
 }
 ?>
 
@@ -115,35 +129,37 @@ if (!file_exists($pageFile)) {
 <html lang="en">
 <head>
     <title><?php echo htmlspecialchars($pageTitle); ?></title>
-    <?php include "includes/head.php"; ?>
+    <?php include $rootPath . "/includes/head.php"; ?>
 </head>
 
 <body>
 
-<?php include "includes/header.php"; ?>
+<?php include $rootPath . "/includes/header.php"; ?>
 
 <main>
     <?php if ($isInvalidRoute): ?>
         <section class="page-hero">
             <h1>Page Not Found</h1>
-            <p>The page you requested does not exist. You have been redirected to the DM Studio AI homepage.</p>
+            <p>The page you requested does not exist. Please check the link or return to the homepage.</p>
+            <a href="index.php?route=home&nav=<?php echo htmlspecialchars($navToken); ?>" class="hero-btn">
+                Back to Home
+            </a>
         </section>
-    <?php endif; ?>
 
-    <?php
-    if ($pageFile !== null) {
-        include $pageFile;
-    } else {
-        echo '
+    <?php elseif ($isMissingFile): ?>
         <section class="page-hero">
             <h1>Page File Missing</h1>
-            <p>The requested page file could not be found. Please check the pages folder.</p>
-        </section>';
-    }
-    ?>
+            <p>The route exists, but the page file could not be found.</p>
+            <p>Please check that this file exists:</p>
+            <p><strong>security/privacy-security.php</strong></p>
+        </section>
+
+    <?php elseif ($pageFile !== null): ?>
+        <?php include $pageFile; ?>
+    <?php endif; ?>
 </main>
 
-<?php include "includes/footer.php"; ?>
+<?php include $rootPath . "/includes/footer.php"; ?>
 
 </body>
 </html>

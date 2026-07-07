@@ -7,7 +7,7 @@
             <h3><span>DM</span> Studio AI</h3>
 
             <p class="footer-tagline">
-                Digital media learning support for SEND students.
+                Simple, creative, and supportive digital media learning for SEND students.
             </p>
 
             <div class="footer-divider"></div>
@@ -22,7 +22,7 @@
                     alvarodebartolo.com
                 </a>
 
-                <p class="footer-role">Digital Media Teacher & Developer</p>
+                <p class="footer-role">Digital Media Teacher &amp; Developer</p>
             </div>
         </div>
 
@@ -51,12 +51,45 @@
                     <span class="footer-icon">ⓘ</span>
                     <span>About</span>
                 </a>
+
+                <a href="index.php?route=privacy-security&nav=<?php echo $navToken; ?>">
+                    <span class="footer-icon">🔒</span>
+                    <span>Privacy</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Learning Support -->
+        <div class="footer-section">
+            <h4>Learning Support</h4>
+            <div class="footer-divider small"></div>
+
+            <nav class="footer-nav">
+                <a href="index.php?route=lesson&nav=<?php echo $navToken; ?>">
+                    <span class="footer-icon">🎬</span>
+                    <span>Starter Lesson</span>
+                </a>
+
+                <a href="index.php?route=courses&nav=<?php echo $navToken; ?>">
+                    <span class="footer-icon">📚</span>
+                    <span>Step-by-step tasks</span>
+                </a>
+
+                <a href="index.php?route=tools&nav=<?php echo $navToken; ?>">
+                    <span class="footer-icon">🛠</span>
+                    <span>Creative tools</span>
+                </a>
+
+                <a href="index.php?route=privacy-security&nav=<?php echo $navToken; ?>">
+                    <span class="footer-icon">✓</span>
+                    <span>Safe learning space</span>
+                </a>
             </nav>
         </div>
 
         <!-- College & Social -->
         <div class="footer-section footer-social-section">
-            <h4>College & Social</h4>
+            <h4>College &amp; Social</h4>
             <div class="footer-divider small"></div>
 
             <nav class="footer-nav footer-social-nav">
