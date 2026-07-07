@@ -2,30 +2,6 @@
 
     <div class="dm-footer-inner">
 
-        <!-- Brand Column -->
-        <div class="footer-brand">
-            <h3><span>DM</span> Studio AI</h3>
-
-            <p class="footer-tagline">
-                Simple, creative, and supportive digital media learning for SEND students.
-            </p>
-
-            <div class="footer-divider"></div>
-
-            <div class="footer-creator">
-                <p class="footer-label">Created by</p>
-
-                <a class="footer-name"
-                   href="https://alvarodebartolo.com"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    alvarodebartolo.com
-                </a>
-
-                <p class="footer-role">Digital Media Teacher &amp; Developer</p>
-            </div>
-        </div>
-
         <!-- Quick Links -->
         <div class="footer-section">
             <h4>Quick Links</h4>
@@ -87,6 +63,39 @@
             </nav>
         </div>
 
+        <!-- Creative Apps -->
+        <div class="footer-section">
+            <h4>Creative Apps</h4>
+            <div class="footer-divider small"></div>
+
+            <nav class="footer-nav">
+                <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="footer-icon">🎨</span>
+                    <span>Canva</span>
+                </a>
+
+                <a href="https://www.tinkercad.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="footer-icon">🧊</span>
+                    <span>Tinkercad</span>
+                </a>
+
+                <a href="https://www.storyboardthat.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="footer-icon">📝</span>
+                    <span>StoryboardThat</span>
+                </a>
+
+                <a href="https://www.capcut.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="footer-icon">✂️</span>
+                    <span>CapCut</span>
+                </a>
+
+                <a href="https://www.wickeditor.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="footer-icon">✨</span>
+                    <span>Wick Editor</span>
+                </a>
+            </nav>
+        </div>
+
         <!-- College & Social -->
         <div class="footer-section footer-social-section">
             <h4>College &amp; Social</h4>
@@ -139,6 +148,12 @@
     <div class="footer-bottom">
         <p>
             © 2026 DM Studio AI.
+            Created by 
+            <a href="https://alvarodebartolo.com"
+               target="_blank"
+               rel="noopener noreferrer">
+                alvarodebartolo.com
+            </a>.
             <span class="footer-heart">♡ Built with care for SEND learners.</span>
             All rights reserved.
         </p>
