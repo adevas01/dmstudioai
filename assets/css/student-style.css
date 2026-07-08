@@ -1,0 +1,171 @@
+.student-ai-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 20px;
+    border-radius: 18px;
+    border: 2px solid #d7defc;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    resize: vertical;
+    margin-bottom: 20px;
+    font-family: inherit;
+}
+
+.student-ai-input:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
+}
+
+#aiButton {
+    font-size: 1.15rem;
+    font-weight: 800;
+    padding: 16px 32px;
+    margin-bottom: 34px;
+    border-radius: 16px;
+}
+
+#aiButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ai-answer-box {
+    margin-top: 44px;
+    color: #111827;
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+.ai-loading,
+.ai-message-error {
+    padding: 22px;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.ai-message-error {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+.ai-section {
+    margin-bottom: 32px;
+    padding: 28px;
+    border-radius: 26px;
+    border: 2px solid #e5e7eb;
+}
+
+.ai-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 22px;
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: #111827;
+}
+
+.ai-section p {
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.9;
+    color: #374151;
+}
+
+.ai-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.ai-icon.blue {
+    background: #3b82f6;
+}
+
+.ai-icon.green {
+    background: #22c55e;
+}
+
+.ai-icon.yellow {
+    background: #facc15;
+}
+
+.ai-answer-section {
+    background: #eff6ff;
+    border-color: #93c5fd;
+}
+
+.ai-steps-section {
+    background: #ecfdf5;
+    border-color: #86efac;
+}
+
+.ai-tip-section {
+    background: #fefce8;
+    border-color: #fde047;
+}
+
+.ai-steps-list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: ai-step-counter;
+}
+
+.ai-steps-list li {
+    position: relative;
+    counter-increment: ai-step-counter;
+    margin-bottom: 24px;
+    padding-left: 58px;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #374151;
+}
+
+.ai-steps-list li::before {
+    content: counter(ai-step-counter);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #22c55e;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-steps-list li:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .student-ai-input {
+        font-size: 1.1rem;
+        padding: 16px;
+    }
+
+    .ai-section {
+        padding: 22px;
+    }
+
+    .ai-section h3 {
+        font-size: 1.35rem;
+    }
+
+    .ai-section p,
+    .ai-steps-list li {
+        font-size: 1.15rem;
+    }
+}

@@ -8,3 +8,7 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=4">
 
 <link rel="stylesheet" href="style.css?v=50">
+
+<?php if (($route ?? '') === 'student'): ?>
+    <link rel="stylesheet" href="assets/css/student-style.css?v=5">
+<?php endif; ?>

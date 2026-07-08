@@ -21,13 +21,9 @@ $stmt = $pdo->prepare("
     LIMIT 1
 ");
 
-// Run query.
 $stmt->execute([$studentId]);
-
-// Store student data.
 $student = $stmt->fetch();
 
-// Stop page safely if student is not found.
 if (!$student) {
     echo '
     <section class="page-hero">
@@ -55,7 +51,6 @@ $tasksStmt = $pdo->prepare("
 ");
 
 $tasksStmt->execute([$studentId]);
-
 $assignedTasks = $tasksStmt->fetchAll();
 
 // Student details.
@@ -175,9 +170,7 @@ $averageProgress = round(($videoProgress + $designProgress + $animationProgress 
 
                         <h3><?php echo htmlspecialchars($task["title"]); ?></h3>
 
-                        <p>
-                            <?php echo htmlspecialchars($task["description"]); ?>
-                        </p>
+                        <p><?php echo htmlspecialchars($task["description"]); ?></p>
 
                         <?php if (!empty($task["recommended_tool"])): ?>
                             <p>
@@ -212,11 +205,16 @@ $averageProgress = round(($videoProgress + $designProgress + $animationProgress 
 
     <div class="student-portal-card">
         <h2>AI Learning Assistant</h2>
-        <p>Ask for help if you are stuck with a task.</p>
+        <p>Ask for help with your Digital Media work.</p>
 
-        <input class="student-ai-input" type="text" placeholder="Example: How do I cut a video clip?">
+        <textarea 
+            id="aiQuestion"
+            class="student-ai-input"
+            placeholder="Example: How do I cut a video clip?"></textarea>
 
-        <button class="primary-btn small-btn">Ask AI</button>
+        <button id="aiButton" class="primary-btn small-btn" onclick="askAI()">Ask AI</button>
+
+        <div id="aiAnswer" class="ai-answer-box"></div>
     </div>
 
     <div class="student-portal-card">
@@ -280,3 +278,6 @@ $averageProgress = round(($videoProgress + $designProgress + $animationProgress 
     </div>
 
 </section>
+
+
+<script src="assets/js/ai.helper.js?v=9"></script>
