@@ -9,6 +9,10 @@
 
 <link rel="stylesheet" href="style.css?v=50">
 
+<?php if (($route ?? 'home') === 'home'): ?>
+    <link rel="stylesheet" href="assets/css/home-style.css?v=1">
+<?php endif; ?>
+
 <?php if (($route ?? '') === 'student'): ?>
     <link rel="stylesheet" href="assets/css/student-style.css?v=5">
 <?php endif; ?>

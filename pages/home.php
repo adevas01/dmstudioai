@@ -1,14 +1,21 @@
-<section class="hero">
+<section class="hero hero-pro">
+    <div class="hero-bg-shape shape-one"></div>
+    <div class="hero-bg-shape shape-two"></div>
+
     <div class="hero-text">
-        <h1>AI Learning for <br><span>Digital Media</span> Students</h1>
+        <p class="hero-kicker">Create • Learn • Build • Share</p>
+
+        <h1>
+            Learn <span>Digital Media</span><br>
+            with AI Support
+        </h1>
 
         <p>
-            Create. Learn. Succeed. DM Studio AI makes digital media education
-            more accessible, inclusive, and inspiring — designed especially for SEND learners.
+            A creative and accessible learning space where SEND students can build
+            real skills in video, design, animation, storytelling, and AI-assisted projects.
         </p>
 
         <div class="hero-buttons">
-
             <?php
                 $allowedDashboardRoles = ["student", "teacher", "manager", "owner"];
                 $dashboardRoute = null;
@@ -23,45 +30,47 @@
             ?>
 
             <?php if ($dashboardRoute !== null): ?>
-
-                <a href="index.php?route=<?php echo htmlspecialchars($dashboardRoute); ?>&nav=<?php echo $navToken; ?>" 
-                   class="primary-btn">
-                    Start Learning
+                <a href="index.php?route=<?php echo htmlspecialchars($dashboardRoute); ?>&nav=<?php echo $navToken; ?>" class="primary-btn">
+                    Start Creating
                 </a>
-
             <?php else: ?>
-
-                <a href="index.php?route=intro-lesson&nav=<?php echo $navToken; ?>" 
-                   class="primary-btn">
-                    Start Learning
+                <a href="index.php?route=intro-lesson&nav=<?php echo $navToken; ?>" class="primary-btn">
+                    Start Creating
                 </a>
-
             <?php endif; ?>
 
-            <a href="index.php?route=tools&nav=<?php echo $navToken; ?>" 
-               class="secondary-btn">
+            <a href="index.php?route=tools&nav=<?php echo $navToken; ?>" class="secondary-btn">
                 Explore Tools
             </a>
-
         </div>
 
         <div class="small-tags">
             <span>✓ SEND-Friendly</span>
-            <span>♡ Inclusive Design</span>
-            <span>🛡 Safe & Supportive</span>
+            <span>🎨 Creative Projects</span>
+            <span>🤖 AI Support</span>
+            <span>🛡 Safe Learning</span>
         </div>
     </div>
 
-    <div class="hero-image">
-        <div class="robot">🤖</div>
+    <div class="hero-image hero-studio">
+        <div class="creative-orbit">
+            <span>🎬</span>
+            <span>🎨</span>
+            <span>📱</span>
+            <span>🎧</span>
+        </div>
+
+        <div class="robot-glow">
+            <div class="robot">🤖</div>
+        </div>
 
         <div class="floating-card card-one">
             <strong>AI Assistant</strong>
-            <p>Hi! How can I help you learn today?</p>
+            <p>Need help with your video project?</p>
         </div>
 
         <div class="floating-card card-two">
-            <strong>Your Progress</strong>
+            <strong>Project Progress</strong>
             <p>83% complete</p>
         </div>
     </div>
@@ -69,57 +78,81 @@
 
 <section class="features" id="features">
     <div class="feature-card">
-        <div class="icon">♿</div>
-        <h3>Accessible Lessons</h3>
-        <p>Easy-to-follow content with adjustable text, audio support, and visual aids for every learner.</p>
+        <div class="icon">🎬</div>
+        <h3>Video Editing</h3>
+        <p>Create short videos, add effects, cut clips, and build confidence with tools like CapCut.</p>
     </div>
 
     <div class="feature-card">
         <div class="icon">🎨</div>
-        <h3>Creative Projects</h3>
-        <p>Hands-on projects that help students build real digital media skills with confidence.</p>
+        <h3>Graphic Design</h3>
+        <p>Design posters, thumbnails, logos, and social media graphics using creative apps.</p>
     </div>
 
     <div class="feature-card">
-        <div class="icon">💬</div>
+        <div class="icon">🤖</div>
         <h3>AI Study Assistant</h3>
-        <p>Step-by-step help, feedback, and explanations tailored to each learner.</p>
+        <p>Get step-by-step explanations, feedback, and simple guidance whenever students need support.</p>
     </div>
 
     <div class="feature-card">
         <div class="icon">📊</div>
         <h3>Progress Tracking</h3>
-        <p>Students and teachers can follow growth, goals, achievements, and learning progress.</p>
+        <p>Students and teachers can track learning, goals, achievements, and completed activities.</p>
     </div>
 </section>
 
 <section class="learning">
-    <h2>Explore Digital Media Learning Areas</h2>
+    <div class="section-heading">
+        <p class="section-kicker">Digital Media Pathways</p>
+        <h2>Choose What You Want to Create</h2>
+    </div>
 
     <div class="learning-grid">
         <div class="learning-card">
+            <span class="learning-icon">🎥</span>
             <h3>Video Editing</h3>
-            <p>Learn to edit, cut, add effects, and create short videos.</p>
+            <p>Learn to cut, edit, add music, captions, and effects.</p>
             <a href="index.php?route=courses&nav=<?php echo $navToken; ?>">Explore →</a>
         </div>
 
         <div class="learning-card">
+            <span class="learning-icon">🖼️</span>
             <h3>Graphic Design</h3>
-            <p>Create posters, thumbnails, layouts, and visual designs.</p>
+            <p>Create posters, layouts, thumbnails, and visual designs.</p>
             <a href="index.php?route=courses&nav=<?php echo $navToken; ?>">Explore →</a>
         </div>
 
         <div class="learning-card">
+            <span class="learning-icon">✨</span>
             <h3>Animation</h3>
-            <p>Bring ideas to life with characters, movement, and effects.</p>
+            <p>Bring characters and ideas to life with movement.</p>
             <a href="index.php?route=courses&nav=<?php echo $navToken; ?>">Explore →</a>
         </div>
 
         <div class="learning-card">
+            <span class="learning-icon">📖</span>
             <h3>Digital Storytelling</h3>
-            <p>Tell stories using images, voice, video, and creativity.</p>
+            <p>Tell stories using images, sound, video, and voice.</p>
             <a href="index.php?route=courses&nav=<?php echo $navToken; ?>">Explore →</a>
         </div>
+    </div>
+</section>
+
+<section class="student-showcase">
+    <div>
+        <p class="section-kicker">Featured Project</p>
+        <h2>Build Real Creative Work</h2>
+        <p>
+            Students can create videos, posters, animations, presentations, and digital stories
+            while receiving clear, accessible support at every step.
+        </p>
+    </div>
+
+    <div class="showcase-card">
+        <span>⭐ Student Project</span>
+        <h3>My First Digital Story</h3>
+        <p>Created with images, voice, captions, and simple video editing.</p>
     </div>
 </section>
 
