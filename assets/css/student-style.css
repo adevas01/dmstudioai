@@ -280,3 +280,175 @@
 }
 
 
+
+/* =========================================================
+   RESPONSIVE STUDENT DASHBOARD
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Main dashboard container */
+.student-portal-layout {
+    width: min(100% - 32px, 1200px);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Prevent cards and their contents from overflowing */
+.student-portal-card,
+.large-student-card,
+.ai-assistant-card,
+.ai-assistant-main {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.student-ai-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    .student-portal-layout {
+        width: calc(100% - 24px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+/* Small tablets and phones */
+@media (max-width: 650px) {
+    .student-portal-layout {
+        width: calc(100% - 20px);
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin: 0 auto;
+    }
+
+    .student-portal-card,
+    .large-student-card {
+        width: 100%;
+        min-width: 0;
+        padding: 24px;
+    }
+
+    .ai-assistant-content {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+    }
+
+    .ai-assistant-character {
+        width: 140px;
+        height: 140px;
+        justify-self: center;
+        align-self: end;
+        margin-top: 24px;
+        margin-bottom: 0;
+    }
+
+    .ai-assistant-character img {
+        width: 140px !important;
+        height: 140px !important;
+        min-width: 140px !important;
+        min-height: 140px !important;
+        max-width: 140px !important;
+        max-height: 140px !important;
+    }
+
+    @media (max-width: 650px) {
+    .ai-assistant-character {
+        width: 150px;
+        height: 150px;
+        justify-self: center;
+        align-self: end;
+        margin-top: 24px;
+        margin-bottom: 0;
+    }
+
+    .ai-assistant-character img {
+        width: 150px !important;
+        height: 150px !important;
+        min-width: 150px !important;
+        min-height: 150px !important;
+        max-width: 150px !important;
+        max-height: 150px !important;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+    .student-portal-layout {
+        width: calc(100% - 16px);
+    }
+
+    .student-portal-card,
+    .large-student-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .student-ai-input {
+        min-height: 140px;
+        padding: 16px;
+        font-size: 1rem;
+    }
+
+    .ai-assistant-character {
+        width: 145px;
+        height: 145px;
+    }
+
+    .ai-assistant-character img {
+        width: 145px !important;
+        height: 145px !important;
+        min-width: 145px !important;
+        min-height: 145px !important;
+        max-width: 145px !important;
+        max-height: 145px !important;
+    }
+
+    @media (max-width: 420px) {
+    .ai-assistant-character {
+        width: 135px;
+        height: 135px;
+    }
+
+    .ai-assistant-character img {
+        width: 135px !important;
+        height: 135px !important;
+        min-width: 135px !important;
+        min-height: 135px !important;
+        max-width: 135px !important;
+        max-height: 135px !important;
+    }
+}
+}
+
+.dashboard-button,
+.dashboard-btn {
+    text-decoration: none;
+}
+
+.dashboard-button:hover,
+.dashboard-button:focus,
+.dashboard-btn:hover,
+.dashboard-btn:focus {
+    text-decoration: none;
+}
