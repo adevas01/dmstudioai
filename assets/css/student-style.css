@@ -1,14 +1,19 @@
+/* =========================================================
+   AI LEARNING ASSISTANT
+========================================================= */
+
 .student-ai-input {
     width: 100%;
     min-height: 120px;
     padding: 20px;
-    border-radius: 18px;
+    margin-bottom: 20px;
     border: 2px solid #d7defc;
+    border-radius: 18px;
+    font-family: inherit;
     font-size: 1.25rem;
     line-height: 1.8;
     resize: vertical;
-    margin-bottom: 20px;
-    font-family: inherit;
+    box-sizing: border-box;
 }
 
 .student-ai-input:focus {
@@ -18,11 +23,11 @@
 }
 
 #aiButton {
+    padding: 16px 32px;
+    margin-bottom: 20px;
+    border-radius: 16px;
     font-size: 1.15rem;
     font-weight: 800;
-    padding: 16px 32px;
-    margin-bottom: 34px;
-    border-radius: 16px;
 }
 
 #aiButton:disabled {
@@ -30,8 +35,59 @@
     cursor: not-allowed;
 }
 
+
+/* Main AI card */
+
+.ai-assistant-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-assistant-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 145px;
+    align-items: center;
+    gap: 24px;
+}
+
+.ai-assistant-main {
+    min-width: 0;
+}
+
+.ai-assistant-main h2 {
+    margin-top: 0;
+}
+
+.ai-assistant-character {
+    width: 145px;
+    height: 145px;
+    align-self: center;
+    justify-self: end;
+}
+
+.ai-assistant-character img {
+    display: block;
+    width: 145px !important;
+    height: 145px !important;
+    min-width: 145px !important;
+    min-height: 145px !important;
+    max-width: 145px !important;
+    max-height: 145px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-sizing: border-box;
+    box-shadow: 0 12px 28px rgba(76, 64, 180, 0.18);
+}
+
+
+/* AI answer area */
+
 .ai-answer-box {
-    margin-top: 44px;
+    margin-top: 18px;
     color: #111827;
     font-size: 1.25rem;
     line-height: 1.8;
@@ -40,24 +96,27 @@
 .ai-loading,
 .ai-message-error {
     padding: 22px;
+    border: 2px solid #e5e7eb;
     border-radius: 20px;
     background: #f8fafc;
-    border: 2px solid #e5e7eb;
     font-size: 1.25rem;
     font-weight: 800;
 }
 
 .ai-message-error {
-    background: #fef2f2;
     border-color: #fecaca;
+    background: #fef2f2;
     color: #991b1b;
 }
+
+
+/* AI response sections */
 
 .ai-section {
     margin-bottom: 32px;
     padding: 28px;
-    border-radius: 26px;
     border: 2px solid #e5e7eb;
+    border-radius: 26px;
 }
 
 .ai-section h3 {
@@ -65,24 +124,24 @@
     align-items: center;
     gap: 14px;
     margin: 0 0 22px;
+    color: #111827;
     font-size: 1.55rem;
     font-weight: 900;
-    color: #111827;
 }
 
 .ai-section p {
     margin: 0;
+    color: #374151;
     font-size: 1.3rem;
     line-height: 1.9;
-    color: #374151;
 }
 
 .ai-icon {
+    display: inline-block;
+    flex-shrink: 0;
     width: 26px;
     height: 26px;
     border-radius: 8px;
-    display: inline-block;
-    flex-shrink: 0;
 }
 
 .ai-icon.blue {
@@ -98,19 +157,22 @@
 }
 
 .ai-answer-section {
-    background: #eff6ff;
     border-color: #93c5fd;
+    background: #eff6ff;
 }
 
 .ai-steps-section {
-    background: #ecfdf5;
     border-color: #86efac;
+    background: #ecfdf5;
 }
 
 .ai-tip-section {
-    background: #fefce8;
     border-color: #fde047;
+    background: #fefce8;
 }
+
+
+/* AI numbered steps */
 
 .ai-steps-list {
     margin: 0;
@@ -121,19 +183,22 @@
 
 .ai-steps-list li {
     position: relative;
-    counter-increment: ai-step-counter;
     margin-bottom: 24px;
     padding-left: 58px;
+    color: #374151;
     font-size: 1.3rem;
     line-height: 1.8;
-    color: #374151;
+    counter-increment: ai-step-counter;
 }
 
 .ai-steps-list li::before {
     content: counter(ai-step-counter);
     position: absolute;
-    left: 0;
     top: 2px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -141,19 +206,63 @@
     color: #ffffff;
     font-size: 1.05rem;
     font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .ai-steps-list li:last-child {
     margin-bottom: 0;
 }
 
-@media (max-width: 700px) {
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .ai-assistant-content {
+        grid-template-columns: minmax(0, 1fr) 120px;
+        gap: 18px;
+    }
+
+    .ai-assistant-character {
+        width: 120px;
+        height: 120px;
+    }
+
+    .ai-assistant-character img {
+        width: 120px !important;
+        height: 120px !important;
+        min-width: 120px !important;
+        min-height: 120px !important;
+        max-width: 120px !important;
+        max-height: 120px !important;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
     .student-ai-input {
-        font-size: 1.1rem;
         padding: 16px;
+        font-size: 1.1rem;
+    }
+
+    .ai-assistant-content {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-assistant-character {
+        width: 110px;
+        height: 110px;
+        justify-self: center;
+        margin-top: 8px;
+    }
+
+    .ai-assistant-character img {
+        width: 110px !important;
+        height: 110px !important;
+        min-width: 110px !important;
+        min-height: 110px !important;
+        max-width: 110px !important;
+        max-height: 110px !important;
     }
 
     .ai-section {
@@ -169,3 +278,5 @@
         font-size: 1.15rem;
     }
 }
+
+

@@ -203,19 +203,46 @@ $averageProgress = round(($videoProgress + $designProgress + $animationProgress 
         <?php endif; ?>
     </div>
 
-    <div class="student-portal-card">
-        <h2>AI Learning Assistant</h2>
-        <p>Ask for help with your Digital Media work.</p>
 
-        <textarea 
-            id="aiQuestion"
-            class="student-ai-input"
-            placeholder="Example: How do I cut a video clip?"></textarea>
 
-        <button id="aiButton" class="primary-btn small-btn" onclick="askAI()">Ask AI</button>
+    <div class="student-portal-card ai-assistant-card">
 
-        <div id="aiAnswer" class="ai-answer-box"></div>
+        <div class="ai-assistant-content">
+
+            <div class="ai-assistant-main">
+
+                <h2>AI Learning Assistant</h2>
+
+                <p>Ask for help with your Digital Media work.</p>
+
+                <textarea
+                    id="aiQuestion"
+                    class="student-ai-input"
+                    placeholder="Example: How do I cut a video clip?"></textarea>
+
+                <button
+                    id="aiButton"
+                    class="primary-btn small-btn"
+                    type="button"
+                    onclick="askAI()">
+                    Ask AI
+                </button>
+
+                <div id="aiAnswer" class="ai-answer-box"></div>
+
+            </div>
+
+            <div class="ai-assistant-character">
+                <img
+                    src="assets/images/alvaro-pixel-assistant.png"
+                    alt="Alvaro and Pixel AI learning assistant">
+            </div>
+
+        </div>
+
     </div>
+
+
 
     <div class="student-portal-card">
         <h2>Teacher Feedback</h2>

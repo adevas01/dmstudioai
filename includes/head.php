@@ -14,5 +14,5 @@
 <?php endif; ?>
 
 <?php if (($route ?? '') === 'student'): ?>
-    <link rel="stylesheet" href="assets/css/student-style.css?v=5">
+    <link rel="stylesheet" href="assets/css/student-style.css?v=12">
 <?php endif; ?>
