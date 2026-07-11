@@ -3,12 +3,16 @@
 ========================================================= */
 
 .student-ai-input {
+    display: block;
     width: 100%;
+    max-width: 100%;
     min-height: 120px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     border: 2px solid #d7defc;
     border-radius: 18px;
+    background: #ffffff;
+    color: #111827;
     font-family: inherit;
     font-size: 1.25rem;
     line-height: 1.8;
@@ -22,12 +26,28 @@
     box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
 }
 
+.student-ai-input::placeholder {
+    color: #6b7280;
+    opacity: 1;
+}
+
+
+/* Ask AI button */
+
 #aiButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
     padding: 16px 32px;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
+    border: none;
     border-radius: 16px;
+    font-family: inherit;
     font-size: 1.15rem;
     font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
 }
 
 #aiButton:disabled {
@@ -36,10 +56,14 @@
 }
 
 
-/* Main AI card */
+/* =========================================================
+   MAIN AI CARD
+========================================================= */
 
 .ai-assistant-card {
     position: relative;
+    min-width: 0;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -48,10 +72,12 @@
     grid-template-columns: minmax(0, 1fr) 145px;
     align-items: center;
     gap: 24px;
+    width: 100%;
 }
 
 .ai-assistant-main {
     min-width: 0;
+    max-width: 100%;
 }
 
 .ai-assistant-main h2 {
@@ -63,6 +89,7 @@
     height: 145px;
     align-self: center;
     justify-self: end;
+    flex-shrink: 0;
 }
 
 .ai-assistant-character img {
@@ -84,23 +111,30 @@
 }
 
 
-/* AI answer area */
+/* =========================================================
+   AI ANSWER AREA
+========================================================= */
 
 .ai-answer-box {
+    width: 100%;
+    max-width: 100%;
     margin-top: 18px;
     color: #111827;
     font-size: 1.25rem;
     line-height: 1.8;
+    overflow-wrap: anywhere;
 }
 
 .ai-loading,
 .ai-message-error {
+    width: 100%;
     padding: 22px;
     border: 2px solid #e5e7eb;
     border-radius: 20px;
     background: #f8fafc;
     font-size: 1.25rem;
     font-weight: 800;
+    box-sizing: border-box;
 }
 
 .ai-message-error {
@@ -110,13 +144,21 @@
 }
 
 
-/* AI response sections */
+/* =========================================================
+   AI RESPONSE SECTIONS
+========================================================= */
 
 .ai-section {
+    width: 100%;
     margin-bottom: 32px;
     padding: 28px;
     border: 2px solid #e5e7eb;
     border-radius: 26px;
+    box-sizing: border-box;
+}
+
+.ai-section:last-child {
+    margin-bottom: 0;
 }
 
 .ai-section h3 {
@@ -127,6 +169,7 @@
     color: #111827;
     font-size: 1.55rem;
     font-weight: 900;
+    line-height: 1.3;
 }
 
 .ai-section p {
@@ -134,6 +177,7 @@
     color: #374151;
     font-size: 1.3rem;
     line-height: 1.9;
+    overflow-wrap: anywhere;
 }
 
 .ai-icon {
@@ -172,11 +216,13 @@
 }
 
 
-/* AI numbered steps */
+/* =========================================================
+   AI NUMBERED STEPS
+========================================================= */
 
 .ai-steps-list {
     margin: 0;
-    padding-left: 0;
+    padding: 0;
     list-style: none;
     counter-reset: ai-step-counter;
 }
@@ -189,6 +235,7 @@
     font-size: 1.3rem;
     line-height: 1.8;
     counter-increment: ai-step-counter;
+    overflow-wrap: anywhere;
 }
 
 .ai-steps-list li::before {
@@ -213,9 +260,135 @@
 }
 
 
-/* Tablet */
+/* =========================================================
+   RESPONSIVE STUDENT DASHBOARD
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+
+/* Main dashboard container */
+
+.student-portal-layout {
+    width: min(calc(100% - 32px), 1200px);
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.student-portal-card,
+.large-student-card,
+.ai-assistant-card,
+.ai-assistant-main {
+    min-width: 0;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   DASHBOARD NAVIGATION BUTTON
+========================================================= */
+
+.dashboard-button,
+.dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: linear-gradient(
+        135deg,
+        #7067f0 0%,
+        #337fe9 48%,
+        #05b9cd 100%
+    );
+    color: #ffffff !important;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow:
+        0 8px 20px rgba(39, 89, 204, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.dashboard-button:link,
+.dashboard-button:visited,
+.dashboard-button:hover,
+.dashboard-button:focus,
+.dashboard-button:active,
+.dashboard-btn:link,
+.dashboard-btn:visited,
+.dashboard-btn:hover,
+.dashboard-btn:focus,
+.dashboard-btn:active {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.dashboard-button:hover,
+.dashboard-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 12px 24px rgba(39, 89, 204, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.dashboard-button:focus-visible,
+.dashboard-btn:focus-visible {
+    outline: 3px solid rgba(97, 218, 251, 0.55);
+    outline-offset: 3px;
+}
+
+.dashboard-button:active,
+.dashboard-btn:active {
+    transform: translateY(0);
+    filter: brightness(0.98);
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
 
 @media (max-width: 900px) {
+    .student-portal-layout {
+        width: calc(100% - 24px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
     .ai-assistant-content {
         grid-template-columns: minmax(0, 1fr) 120px;
         gap: 18px;
@@ -237,106 +410,17 @@
 }
 
 
-/* Mobile */
-
-@media (max-width: 650px) {
-    .student-ai-input {
-        padding: 16px;
-        font-size: 1.1rem;
-    }
-
-    .ai-assistant-content {
-        grid-template-columns: 1fr;
-    }
-
-    .ai-assistant-character {
-        width: 110px;
-        height: 110px;
-        justify-self: center;
-        margin-top: 8px;
-    }
-
-    .ai-assistant-character img {
-        width: 110px !important;
-        height: 110px !important;
-        min-width: 110px !important;
-        min-height: 110px !important;
-        max-width: 110px !important;
-        max-height: 110px !important;
-    }
-
-    .ai-section {
-        padding: 22px;
-    }
-
-    .ai-section h3 {
-        font-size: 1.35rem;
-    }
-
-    .ai-section p,
-    .ai-steps-list li {
-        font-size: 1.15rem;
-    }
-}
-
-
-
 /* =========================================================
-   RESPONSIVE STUDENT DASHBOARD
+   SMALL TABLETS AND PHONES
 ========================================================= */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-/* Main dashboard container */
-.student-portal-layout {
-    width: min(100% - 32px, 1200px);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Prevent cards and their contents from overflowing */
-.student-portal-card,
-.large-student-card,
-.ai-assistant-card,
-.ai-assistant-main {
-    min-width: 0;
-    max-width: 100%;
-}
-
-.student-ai-input {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-/* Tablets */
-@media (max-width: 900px) {
-    .student-portal-layout {
-        width: calc(100% - 24px);
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-    }
-}
-
-/* Small tablets and phones */
 @media (max-width: 650px) {
     .student-portal-layout {
         width: calc(100% - 20px);
         grid-template-columns: minmax(0, 1fr);
         gap: 18px;
-        margin: 0 auto;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .student-portal-card,
@@ -346,36 +430,31 @@ body {
         padding: 24px;
     }
 
+    .student-ai-input {
+        min-height: 130px;
+        padding: 16px;
+        font-size: 1.1rem;
+        line-height: 1.65;
+    }
+
+    #aiButton {
+        width: 100%;
+        min-height: 52px;
+        padding: 15px 20px;
+    }
+
     .ai-assistant-content {
         grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
         width: 100%;
     }
 
-    .ai-assistant-character {
-        width: 140px;
-        height: 140px;
-        justify-self: center;
-        align-self: end;
-        margin-top: 24px;
-        margin-bottom: 0;
-    }
-
-    .ai-assistant-character img {
-        width: 140px !important;
-        height: 140px !important;
-        min-width: 140px !important;
-        min-height: 140px !important;
-        max-width: 140px !important;
-        max-height: 140px !important;
-    }
-
-    @media (max-width: 650px) {
     .ai-assistant-character {
         width: 150px;
         height: 150px;
         justify-self: center;
         align-self: end;
-        margin-top: 24px;
+        margin-top: 8px;
         margin-bottom: 0;
     }
 
@@ -386,13 +465,52 @@ body {
         min-height: 150px !important;
         max-width: 150px !important;
         max-height: 150px !important;
-        object-fit: cover;
-        border-radius: 50%;
+    }
+
+    .ai-section {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .ai-section h3 {
+        gap: 10px;
+        font-size: 1.35rem;
+    }
+
+    .ai-section p,
+    .ai-steps-list li {
+        font-size: 1.15rem;
+    }
+
+    .ai-steps-list li {
+        padding-left: 52px;
+    }
+
+    /*
+       Mobile menu Dashboard button
+       This creates the cleaner full-width button shown in the menu.
+    */
+
+    .dashboard-button,
+    .dashboard-btn {
+        width: 100%;
+        min-height: 50px;
+        padding: 14px 20px;
+        border-radius: 12px;
+        color: #ffffff !important;
+        font-size: 1rem;
+        letter-spacing: 0.01em;
+        box-shadow:
+            0 8px 20px rgba(17, 104, 210, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 }
-}
 
-/* Very small phones */
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
 @media (max-width: 420px) {
     .student-portal-layout {
         width: calc(100% - 16px);
@@ -411,21 +529,6 @@ body {
     }
 
     .ai-assistant-character {
-        width: 145px;
-        height: 145px;
-    }
-
-    .ai-assistant-character img {
-        width: 145px !important;
-        height: 145px !important;
-        min-width: 145px !important;
-        min-height: 145px !important;
-        max-width: 145px !important;
-        max-height: 145px !important;
-    }
-
-    @media (max-width: 420px) {
-    .ai-assistant-character {
         width: 135px;
         height: 135px;
     }
@@ -438,17 +541,37 @@ body {
         max-width: 135px !important;
         max-height: 135px !important;
     }
-}
+
+    .ai-section {
+        padding: 18px;
+    }
+
+    .ai-section h3 {
+        font-size: 1.25rem;
+    }
+
+    .ai-section p,
+    .ai-steps-list li {
+        font-size: 1.05rem;
+    }
+
+    .dashboard-button,
+    .dashboard-btn {
+        min-height: 48px;
+        padding: 13px 18px;
+        border-radius: 11px;
+        font-size: 0.98rem;
+    }
 }
 
-.dashboard-button,
-.dashboard-btn {
-    text-decoration: none;
-}
 
-.dashboard-button:hover,
-.dashboard-button:focus,
-.dashboard-btn:hover,
-.dashboard-btn:focus {
-    text-decoration: none;
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-button,
+    .dashboard-btn {
+        transition: none;
+    }
 }

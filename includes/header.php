@@ -64,11 +64,11 @@
 
             <?php endif; ?>
 
-            <!-- Dashboard button shown inside mobile menu -->
+            <!-- Dashboard button inside mobile menu -->
             <?php if (isset($_SESSION["user_id"], $_SESSION["role"])): ?>
-                <div class="nav-cta-mobile">
+                <div class="nav-dashboard-mobile">
                     <a
-                        class="top-btn"
+                        class="nav-dashboard-button"
                         href="index.php?route=<?php echo htmlspecialchars($_SESSION["role"]); ?>&nav=<?php echo htmlspecialchars($navToken); ?>">
                         Dashboard
                     </a>
@@ -77,11 +77,11 @@
 
         </nav>
 
-        <!-- Dashboard button shown on desktop -->
+        <!-- Dashboard button on desktop -->
         <?php if (isset($_SESSION["user_id"], $_SESSION["role"])): ?>
-            <div class="nav-cta-desktop">
+            <div class="nav-dashboard-desktop">
                 <a
-                    class="top-btn"
+                    class="nav-dashboard-button"
                     href="index.php?route=<?php echo htmlspecialchars($_SESSION["role"]); ?>&nav=<?php echo htmlspecialchars($navToken); ?>">
                     Dashboard
                 </a>

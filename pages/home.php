@@ -52,28 +52,69 @@
         </div>
     </div>
 
-    <div class="hero-image hero-studio">
-        <div class="creative-orbit">
-            <span>🎬</span>
-            <span>🎨</span>
-            <span>📱</span>
-            <span>🎧</span>
+   
+    
+   
+<div class="hero-image hero-studio">
+
+    <div class="pixel-background-glow"></div>
+
+    <div class="creative-orbit" aria-hidden="true">
+        <span class="orbit-item orbit-video">🎬</span>
+        <span class="orbit-item orbit-design">🎨</span>
+        <span class="orbit-item orbit-mobile">📱</span>
+        <span class="orbit-item orbit-audio">🎧</span>
+    </div>
+
+    <div class="pixel-robot-wrapper">
+        <div class="pixel-ring pixel-ring-one"></div>
+        <div class="pixel-ring pixel-ring-two"></div>
+
+        <div class="pixel-image-frame">
+            <img
+                src="assets/images/pixel-robot.png"
+                alt="Pixel, the friendly DM Studio AI learning assistant"
+                class="pixel-robot-image"
+            >
+
+            <div class="pixel-image-shine"></div>
         </div>
 
-        <div class="robot-glow">
-            <div class="robot">🤖</div>
-        </div>
+        <div class="pixel-shadow"></div>
+    </div>
 
-        <div class="floating-card card-one">
-            <strong>AI Assistant</strong>
-            <p>Need help with your video project?</p>
-        </div>
+    <div class="floating-card card-one">
+        <div class="floating-card-icon">✨</div>
 
-        <div class="floating-card card-two">
-            <strong>Project Progress</strong>
-            <p>83% complete</p>
+        <div>
+            <strong>Ask Pixel</strong>
+            <p>Need help with your creative project?</p>
         </div>
     </div>
+
+    <div class="floating-card card-two">
+        <div class="progress-card-heading">
+            <strong>Project Progress</strong>
+            <span>83%</span>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill"></div>
+        </div>
+
+        <p>Great work — keep creating!</p>
+    </div>
+
+    <div class="pixel-status">
+        <span class="pixel-status-dot"></span>
+        Pixel is ready to help
+    </div>
+</div>
+
+
+
+
+
 </section>
 
 <section class="features" id="features">
