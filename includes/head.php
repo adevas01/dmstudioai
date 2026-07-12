@@ -16,7 +16,7 @@
 <?php endif; ?>
 
 <?php if (($route ?? '') === 'student'): ?>
-    <link rel="stylesheet" href="assets/css/student-style.css?v=17">
+    <link rel="stylesheet" href="assets/css/student-style.css?v=20">
 <?php endif; ?>
 
 <!-- Header must load LAST -->

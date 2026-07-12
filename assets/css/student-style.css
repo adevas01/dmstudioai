@@ -1,95 +1,765 @@
 /* =========================================================
-   AI LEARNING ASSISTANT
+   DM STUDIO AI — STUDENT DASHBOARD
+   File: assets/css/student-style.css
 ========================================================= */
 
-.student-ai-input {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    min-height: 120px;
-    padding: 20px;
-    margin: 0 0 20px;
-    border: 2px solid #d7defc;
-    border-radius: 18px;
-    background: #ffffff;
-    color: #111827;
-    font-family: inherit;
-    font-size: 1.25rem;
-    line-height: 1.8;
-    resize: vertical;
-    box-sizing: border-box;
-}
+:root {
+    --student-bg: #f5f7ff;
+    --student-card: #ffffff;
+    --student-text: #11163f;
+    --student-muted: #667085;
+    --student-border: #e7eaf6;
 
-.student-ai-input:focus {
-    outline: none;
-    border-color: #6c63ff;
-    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
-}
+    --student-purple: #6c4df6;
+    --student-blue: #2f80ed;
+    --student-cyan: #08b7cc;
+    --student-green: #16a36f;
+    --student-yellow: #f4b942;
+    --student-red: #ef5b68;
 
-.student-ai-input::placeholder {
-    color: #6b7280;
-    opacity: 1;
-}
+    --student-gradient: linear-gradient(
+        135deg,
+        var(--student-purple) 0%,
+        var(--student-blue) 52%,
+        var(--student-cyan) 100%
+    );
 
+    --student-shadow:
+        0 14px 34px rgba(28, 42, 94, 0.08),
+        0 3px 10px rgba(28, 42, 94, 0.04);
 
-/* Ask AI button */
-
-#aiButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 16px 32px;
-    margin: 0 0 20px;
-    border: none;
-    border-radius: 16px;
-    font-family: inherit;
-    font-size: 1.15rem;
-    font-weight: 800;
-    line-height: 1;
-    cursor: pointer;
-}
-
-#aiButton:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+    --student-radius-lg: 24px;
+    --student-radius-md: 18px;
+    --student-radius-sm: 12px;
 }
 
 
 /* =========================================================
-   MAIN AI CARD
+   GLOBAL
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--student-bg);
+    color: var(--student-text);
+}
+
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   APP WRAPPER
+========================================================= */
+
+.student-app-dashboard {
+    width: min(calc(100% - 40px), 1200px);
+    margin: 26px auto 50px;
+}
+
+
+/* =========================================================
+   WELCOME BANNER
+========================================================= */
+
+.student-welcome-banner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    align-items: center;
+    gap: 24px;
+
+    min-height: 230px;
+    padding: 38px 42px;
+    overflow: hidden;
+
+    border: 1px solid rgba(208, 222, 255, 0.8);
+    border-radius: 28px;
+
+    background:
+        radial-gradient(circle at 10% 30%, rgba(108, 77, 246, 0.13), transparent 25%),
+        linear-gradient(110deg, #f1f3ff 0%, #e9f5ff 56%, #ddf8ff 100%);
+
+    box-shadow: 0 16px 38px rgba(56, 76, 150, 0.08);
+}
+
+.student-welcome-copy {
+    position: relative;
+    z-index: 2;
+}
+
+.student-dashboard-kicker {
+    margin: 0 0 10px;
+    color: var(--student-purple);
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.student-welcome-banner h1 {
+    margin: 0 0 14px;
+    color: var(--student-text);
+    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+    font-weight: 950;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+}
+
+.student-welcome-banner h1 span:first-of-type {
+    color: var(--student-purple);
+}
+
+.welcome-wave {
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.student-welcome-message {
+    max-width: 620px;
+    margin: 0;
+    color: #3f4a68;
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.student-welcome-art {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 170px;
+}
+
+.student-welcome-art img {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+    border: 8px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 18px 38px rgba(54, 72, 150, 0.16);
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.student-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+}
+
+.student-dashboard-grid > * {
+    min-width: 0;
+}
+
+.student-portal-card {
+    min-width: 0;
+    padding: 28px;
+    border: 1px solid var(--student-border);
+    border-radius: var(--student-radius-lg);
+    background: var(--student-card);
+    box-shadow: var(--student-shadow);
+}
+
+.large-student-card {
+    grid-column: 1 / -1;
+}
+
+.student-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 14px;
+}
+
+.student-card-heading h2 {
+    margin: 0;
+    color: var(--student-text);
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+.student-card-heading p {
+    margin: 6px 0 0;
+    color: var(--student-muted);
+    line-height: 1.55;
+}
+
+.student-card-kicker {
+    margin: 0 0 4px;
+    color: var(--student-purple);
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.student-heading-icon {
+    font-size: 1.65rem;
+}
+
+.student-card-description {
+    margin: 8px 0 16px;
+    color: var(--student-muted);
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.student-primary-action,
+.student-secondary-action,
+.student-card-action,
+.student-text-link,
+.quick-action-list a {
+    text-decoration: none !important;
+}
+
+.student-primary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 46px;
+    margin-top: 22px;
+    padding: 12px 20px;
+
+    border: 0;
+    border-radius: 12px;
+    background: var(--student-gradient);
+    color: #ffffff !important;
+
+    font-size: 0.95rem;
+    font-weight: 900;
+    line-height: 1;
+
+    box-shadow: 0 9px 20px rgba(76, 79, 229, 0.22);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.student-primary-action:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+.student-card-action {
+    margin-top: 18px;
+}
+
+.student-secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 42px;
+    padding: 10px 16px;
+
+    border: 1px solid #cfd5f2;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #353c65 !important;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.student-text-link {
+    display: inline-flex;
+    margin-top: 18px;
+    color: var(--student-purple) !important;
+    font-weight: 850;
+}
+
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.student-profile-main {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+}
+
+.student-avatar-large {
+    display: grid;
+    place-items: center;
+
+    width: 82px;
+    height: 82px;
+
+    border-radius: 24px;
+    background: var(--student-gradient);
+    color: #ffffff;
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    box-shadow: 0 12px 26px rgba(47, 128, 237, 0.24);
+}
+
+.student-profile-details h2 {
+    margin: 0 0 6px;
+    color: var(--student-text);
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+.student-email {
+    margin: 0 0 8px;
+    color: var(--student-muted);
+    overflow-wrap: anywhere;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 850;
+}
+
+.status-approved {
+    background: #dff6e8;
+    color: #147a46;
+}
+
+.status-pending {
+    background: #fff2cd;
+    color: #8a5a00;
+}
+
+.status-blocked {
+    background: #fde2e4;
+    color: #9b1c31;
+}
+
+.student-course-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 14px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--student-border);
+}
+
+.student-detail-label {
+    margin: 0;
+    color: var(--student-muted);
+    font-size: 0.88rem;
+    font-weight: 750;
+}
+
+.student-detail-value {
+    margin: 0;
+    color: var(--student-text);
+    font-size: 0.92rem;
+    font-weight: 850;
+}
+
+.student-profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.student-stat-item {
+    padding: 12px;
+    border-radius: 14px;
+    background: #f8f9ff;
+}
+
+.student-stat-icon {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1.15rem;
+}
+
+.student-stat-label {
+    display: block;
+    color: var(--student-muted);
+    font-size: 0.78rem;
+}
+
+.student-stat-item strong {
+    display: block;
+    margin-top: 3px;
+    color: var(--student-text);
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   PROGRESS CARD
+========================================================= */
+
+.student-progress-summary {
+    margin: 8px 0 16px;
+    color: var(--student-muted);
+}
+
+.big-progress-number {
+    margin: 14px 0;
+    color: var(--student-purple);
+    font-size: clamp(2.5rem, 5vw, 3.7rem);
+    font-weight: 950;
+    line-height: 1;
+}
+
+.mini-progress-bar {
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e8ebf7;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--student-gradient);
+}
+
+.student-progress-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.student-progress-footer p {
+    margin: 0;
+    color: var(--student-muted);
+    font-size: 0.9rem;
+}
+
+.student-progress-footer a {
+    color: var(--student-purple);
+    font-weight: 850;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CONTINUE LEARNING
+========================================================= */
+
+.continue-learning-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.continue-learning-card::after {
+    content: "▶";
+    position: absolute;
+    right: 22px;
+    bottom: 6px;
+    color: rgba(108, 77, 246, 0.08);
+    font-size: 6rem;
+    font-weight: 950;
+    transform: rotate(-7deg);
+}
+
+.continue-learning-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.student-progress-label {
+    margin: 10px 0 0;
+    color: var(--student-muted);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TODAY'S TASK
+========================================================= */
+
+.featured-task-card {
+    padding: 20px;
+    border: 1px solid #f1d58a;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #fffdf6 0%, #fff8e8 100%);
+}
+
+.featured-task-topline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.featured-task-topline h3 {
+    margin: 0;
+    color: var(--student-text);
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+
+.featured-task-content p {
+    margin: 10px 0;
+    color: #535c76;
+    line-height: 1.55;
+}
+
+.task-due-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    min-height: 30px;
+    padding: 6px 11px;
+
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.task-due-neutral {
+    background: #edf2ff;
+    color: #4055a8;
+}
+
+.task-due-soon,
+.task-due-today {
+    background: #fff1c7;
+    color: #8a5a00;
+}
+
+.task-due-overdue {
+    background: #fde2e4;
+    color: #9b1c31;
+}
+
+.student-empty-state {
+    padding: 18px;
+    text-align: center;
+    border-radius: 18px;
+    background: #f8f9ff;
+}
+
+.student-empty-icon {
+    font-size: 2rem;
+}
+
+.student-empty-state h3 {
+    margin: 10px 0 6px;
+}
+
+.student-empty-state p {
+    margin: 0;
+    color: var(--student-muted);
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.student-skills-list {
+    display: grid;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.student-skill-item {
+    display: grid;
+    gap: 8px;
+}
+
+.student-skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.student-skill-row > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--student-text);
+    font-weight: 800;
+}
+
+.student-skill-icon {
+    font-size: 1rem;
+}
+
+.student-skill-row strong {
+    color: var(--student-text);
+    font-size: 0.9rem;
+}
+
+.student-skill-item:nth-child(2) .mini-progress-fill {
+    background: linear-gradient(90deg, #6c4df6, #2f80ed);
+}
+
+.student-skill-item:nth-child(3) .mini-progress-fill {
+    background: linear-gradient(90deg, #2f80ed, #08b7cc);
+}
+
+.student-skill-item:nth-child(4) .mini-progress-fill {
+    background: linear-gradient(90deg, #08b7cc, #19b58a);
+}
+
+
+/* =========================================================
+   AI ASSISTANT
 ========================================================= */
 
 .ai-assistant-card {
     position: relative;
-    min-width: 0;
-    max-width: 100%;
     overflow: hidden;
+    background:
+        radial-gradient(circle at 100% 100%, rgba(8, 183, 204, 0.14), transparent 32%),
+        linear-gradient(135deg, #ffffff 0%, #f4fbff 100%);
 }
 
 .ai-assistant-content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 145px;
     align-items: center;
-    gap: 24px;
-    width: 100%;
+    gap: 20px;
 }
 
 .ai-assistant-main {
     min-width: 0;
-    max-width: 100%;
 }
 
-.ai-assistant-main h2 {
-    margin-top: 0;
+.ai-question-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 50px;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.student-ai-input {
+    width: 100%;
+    min-height: 112px;
+    padding: 16px 18px;
+    margin: 0;
+
+    border: 2px solid #d7defc;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.55;
+    resize: vertical;
+}
+
+.student-ai-input::placeholder {
+    color: #7a849e;
+}
+
+.student-ai-input:focus {
+    outline: none;
+    border-color: var(--student-purple);
+    box-shadow: 0 0 0 4px rgba(108, 77, 246, 0.14);
+}
+
+.student-ai-send-button,
+#aiButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    min-height: 50px;
+    align-self: end;
+
+    border: 0;
+    border-radius: 14px;
+    background: var(--student-gradient);
+    color: #ffffff;
+
+    font-size: 1.2rem;
+    font-weight: 900;
+    cursor: pointer;
+
+    box-shadow: 0 9px 20px rgba(76, 79, 229, 0.22);
+}
+
+.student-ai-send-button:disabled,
+#aiButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ai-suggestion-section {
+    margin-top: 14px;
+}
+
+.ai-suggestion-section > p {
+    margin: 0 0 8px;
+    color: var(--student-muted);
+    font-size: 0.9rem;
+}
+
+.ai-suggestion-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ai-suggestion-chip {
+    min-height: 34px;
+    padding: 7px 11px;
+
+    border: 1px solid #d9def9;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #3f3f72;
+
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
 }
 
 .ai-assistant-character {
     width: 145px;
     height: 145px;
-    align-self: center;
     justify-self: end;
-    flex-shrink: 0;
 }
 
 .ai-assistant-character img {
@@ -100,41 +770,39 @@
     min-height: 145px !important;
     max-width: 145px !important;
     max-height: 145px !important;
+
     margin: 0 !important;
     padding: 0 !important;
+
     border: 5px solid #ffffff;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
-    box-sizing: border-box;
-    box-shadow: 0 12px 28px rgba(76, 64, 180, 0.18);
+
+    box-shadow: 0 14px 30px rgba(76, 64, 180, 0.18);
 }
 
 
 /* =========================================================
-   AI ANSWER AREA
+   AI ANSWER
 ========================================================= */
 
 .ai-answer-box {
     width: 100%;
-    max-width: 100%;
     margin-top: 18px;
     color: #111827;
-    font-size: 1.25rem;
-    line-height: 1.8;
+    font-size: 1.05rem;
+    line-height: 1.7;
     overflow-wrap: anywhere;
 }
 
 .ai-loading,
 .ai-message-error {
-    width: 100%;
-    padding: 22px;
+    padding: 18px;
     border: 2px solid #e5e7eb;
-    border-radius: 20px;
+    border-radius: 18px;
     background: #f8fafc;
-    font-size: 1.25rem;
     font-weight: 800;
-    box-sizing: border-box;
 }
 
 .ai-message-error {
@@ -143,18 +811,11 @@
     color: #991b1b;
 }
 
-
-/* =========================================================
-   AI RESPONSE SECTIONS
-========================================================= */
-
 .ai-section {
-    width: 100%;
-    margin-bottom: 32px;
-    padding: 28px;
+    margin-bottom: 20px;
+    padding: 20px;
     border: 2px solid #e5e7eb;
-    border-radius: 26px;
-    box-sizing: border-box;
+    border-radius: 20px;
 }
 
 .ai-section:last-child {
@@ -164,28 +825,22 @@
 .ai-section h3 {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin: 0 0 22px;
-    color: #111827;
-    font-size: 1.55rem;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-size: 1.2rem;
     font-weight: 900;
-    line-height: 1.3;
 }
 
 .ai-section p {
     margin: 0;
     color: #374151;
-    font-size: 1.3rem;
-    line-height: 1.9;
-    overflow-wrap: anywhere;
+    line-height: 1.7;
 }
 
 .ai-icon {
-    display: inline-block;
-    flex-shrink: 0;
-    width: 26px;
-    height: 26px;
-    border-radius: 8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
 }
 
 .ai-icon.blue {
@@ -215,11 +870,6 @@
     background: #fefce8;
 }
 
-
-/* =========================================================
-   AI NUMBERED STEPS
-========================================================= */
-
 .ai-steps-list {
     margin: 0;
     padding: 0;
@@ -229,152 +879,148 @@
 
 .ai-steps-list li {
     position: relative;
-    margin-bottom: 24px;
-    padding-left: 58px;
+    margin-bottom: 16px;
+    padding-left: 48px;
     color: #374151;
-    font-size: 1.3rem;
-    line-height: 1.8;
+    line-height: 1.65;
     counter-increment: ai-step-counter;
-    overflow-wrap: anywhere;
 }
 
 .ai-steps-list li::before {
     content: counter(ai-step-counter);
     position: absolute;
-    top: 2px;
+    top: 1px;
     left: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: #22c55e;
     color: #ffffff;
-    font-size: 1.05rem;
+
+    font-size: 0.95rem;
     font-weight: 900;
 }
 
-.ai-steps-list li:last-child {
-    margin-bottom: 0;
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.teacher-feedback-card .student-card-description {
+    padding: 16px 18px;
+    border-left: 4px solid var(--student-purple);
+    border-radius: 0 14px 14px 0;
+    background: #f7f6ff;
 }
 
 
 /* =========================================================
-   RESPONSIVE STUDENT DASHBOARD
+   ACHIEVEMENTS
 ========================================================= */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+.achievement-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
 }
 
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    overflow-x: hidden;
-}
+.achievement-list span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 9px 13px;
 
-img,
-video,
-iframe {
-    max-width: 100%;
-}
+    border-radius: 12px;
+    background: #f4f1ff;
+    color: #3f3f72;
 
-
-/* Main dashboard container */
-
-.student-portal-layout {
-    width: min(calc(100% - 32px), 1200px);
-    max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.student-portal-card,
-.large-student-card,
-.ai-assistant-card,
-.ai-assistant-main {
-    min-width: 0;
-    max-width: 100%;
+    font-size: 0.86rem;
+    font-weight: 800;
 }
 
 
 /* =========================================================
-   DASHBOARD NAVIGATION BUTTON
+   RECENT ACTIVITY
 ========================================================= */
 
-.dashboard-button,
-.dashboard-btn {
+.activity-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 16px;
+    border: 1px solid var(--student-border);
+    border-radius: 14px;
+    background: #f8f9ff;
+}
+
+.activity-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+
+    background: #ebe8ff;
+}
+
+.activity-item strong {
+    color: var(--student-text);
+}
+
+.activity-item p {
+    margin: 4px 0 0;
+    color: var(--student-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-action-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.quick-action-list a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 46px;
-    padding: 12px 28px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
-    background: linear-gradient(
-        135deg,
-        #7067f0 0%,
-        #337fe9 48%,
-        #05b9cd 100%
-    );
-    color: #ffffff !important;
-    font-family: inherit;
-    font-size: 0.95rem;
+
+    min-height: 42px;
+    padding: 10px 16px;
+
+    border: 1px solid #cfd5f2;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #353c65 !important;
+
+    font-size: 0.88rem;
     font-weight: 800;
-    line-height: 1;
-    text-align: center;
-    text-decoration: none !important;
-    white-space: nowrap;
-    cursor: pointer;
-    box-shadow:
-        0 8px 20px rgba(39, 89, 204, 0.24),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease,
-        border-color 0.2s ease;
 }
 
-.dashboard-button:link,
-.dashboard-button:visited,
-.dashboard-button:hover,
-.dashboard-button:focus,
-.dashboard-button:active,
-.dashboard-btn:link,
-.dashboard-btn:visited,
-.dashboard-btn:hover,
-.dashboard-btn:focus,
-.dashboard-btn:active {
-    color: #ffffff !important;
-    text-decoration: none !important;
-}
-
-.dashboard-button:hover,
-.dashboard-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.07);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow:
-        0 12px 24px rgba(39, 89, 204, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.24);
-}
-
-.dashboard-button:focus-visible,
-.dashboard-btn:focus-visible {
-    outline: 3px solid rgba(97, 218, 251, 0.55);
-    outline-offset: 3px;
-}
-
-.dashboard-button:active,
-.dashboard-btn:active {
-    transform: translateY(0);
-    filter: brightness(0.98);
+.quick-action-list a:hover {
+    background: #f7f8ff;
 }
 
 
@@ -383,126 +1029,153 @@ iframe {
 ========================================================= */
 
 @media (max-width: 900px) {
-    .student-portal-layout {
+    .student-app-dashboard {
         width: calc(100% - 24px);
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .student-welcome-banner {
+        grid-template-columns: minmax(0, 1fr) 210px;
+        padding: 30px;
+    }
+
+    .student-welcome-art img {
+        width: 170px;
+        height: 170px;
+    }
+
+    .student-dashboard-grid {
         gap: 18px;
+    }
+
+    .student-portal-card {
+        padding: 24px;
+    }
+
+    .student-profile-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-timeline {
+        grid-template-columns: 1fr;
     }
 
     .ai-assistant-content {
-        grid-template-columns: minmax(0, 1fr) 120px;
-        gap: 18px;
+        grid-template-columns: minmax(0, 1fr) 115px;
     }
 
-    .ai-assistant-character {
-        width: 120px;
-        height: 120px;
-    }
-
+    .ai-assistant-character,
     .ai-assistant-character img {
-        width: 120px !important;
-        height: 120px !important;
-        min-width: 120px !important;
-        min-height: 120px !important;
-        max-width: 120px !important;
-        max-height: 120px !important;
+        width: 115px !important;
+        height: 115px !important;
+        min-width: 115px !important;
+        min-height: 115px !important;
+        max-width: 115px !important;
+        max-height: 115px !important;
     }
 }
 
 
 /* =========================================================
-   SMALL TABLETS AND PHONES
+   PHONES
 ========================================================= */
 
 @media (max-width: 650px) {
-    .student-portal-layout {
+    .student-app-dashboard {
         width: calc(100% - 20px);
-        grid-template-columns: minmax(0, 1fr);
+        margin-top: 18px;
+    }
+
+    .student-welcome-banner {
+        grid-template-columns: 1fr;
         gap: 18px;
-        margin-right: auto;
-        margin-left: auto;
+        min-height: 0;
+        padding: 26px 22px;
+        border-radius: 22px;
+    }
+
+    .student-welcome-art {
+        min-height: 0;
+    }
+
+    .student-welcome-art img {
+        width: 145px;
+        height: 145px;
+    }
+
+    .student-dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
     }
 
     .student-portal-card,
     .large-student-card {
-        width: 100%;
-        min-width: 0;
-        padding: 24px;
+        grid-column: auto;
+        padding: 22px;
+        border-radius: 20px;
     }
 
-    .student-ai-input {
-        min-height: 130px;
-        padding: 16px;
-        font-size: 1.1rem;
-        line-height: 1.65;
+    .student-profile-main {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 16px;
     }
 
-    #aiButton {
-        width: 100%;
-        min-height: 52px;
-        padding: 15px 20px;
+    .student-avatar-large {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+        font-size: 1.7rem;
+    }
+
+    .student-course-details {
+        grid-template-columns: 1fr;
+    }
+
+    .student-progress-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .featured-task-topline {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .ai-assistant-content {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 22px;
+        grid-template-columns: 1fr;
+    }
+
+    .ai-question-row {
+        grid-template-columns: 1fr;
+    }
+
+    .student-ai-send-button,
+    #aiButton {
         width: 100%;
+        min-height: 46px;
     }
 
     .ai-assistant-character {
-        width: 150px;
-        height: 150px;
+        width: 145px;
+        height: 145px;
         justify-self: center;
-        align-self: end;
-        margin-top: 8px;
-        margin-bottom: 0;
     }
 
     .ai-assistant-character img {
-        width: 150px !important;
-        height: 150px !important;
-        min-width: 150px !important;
-        min-height: 150px !important;
-        max-width: 150px !important;
-        max-height: 150px !important;
+        width: 145px !important;
+        height: 145px !important;
+        min-width: 145px !important;
+        min-height: 145px !important;
+        max-width: 145px !important;
+        max-height: 145px !important;
     }
 
-    .ai-section {
-        padding: 22px;
-        border-radius: 22px;
+    .quick-action-list {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
-    .ai-section h3 {
-        gap: 10px;
-        font-size: 1.35rem;
-    }
-
-    .ai-section p,
-    .ai-steps-list li {
-        font-size: 1.15rem;
-    }
-
-    .ai-steps-list li {
-        padding-left: 52px;
-    }
-
-    /*
-       Mobile menu Dashboard button
-       This creates the cleaner full-width button shown in the menu.
-    */
-
-    .dashboard-button,
-    .dashboard-btn {
+    .quick-action-list a {
         width: 100%;
-        min-height: 50px;
-        padding: 14px 20px;
-        border-radius: 12px;
-        color: #ffffff !important;
-        font-size: 1rem;
-        letter-spacing: 0.01em;
-        box-shadow:
-            0 8px 20px rgba(17, 104, 210, 0.28),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 }
 
@@ -512,20 +1185,38 @@ iframe {
 ========================================================= */
 
 @media (max-width: 420px) {
-    .student-portal-layout {
+    .student-app-dashboard {
         width: calc(100% - 16px);
     }
 
-    .student-portal-card,
-    .large-student-card {
-        padding: 20px;
-        border-radius: 20px;
+    .student-welcome-banner {
+        padding: 22px 18px;
     }
 
-    .student-ai-input {
-        min-height: 140px;
-        padding: 16px;
-        font-size: 1rem;
+    .student-welcome-banner h1 {
+        font-size: 2rem;
+    }
+
+    .student-portal-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .student-profile-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .student-avatar-large {
+        margin: 0 auto;
+    }
+
+    .status-badge {
+        margin-inline: auto;
+    }
+
+    .student-profile-stats {
+        grid-template-columns: 1fr;
     }
 
     .ai-assistant-character {
@@ -541,37 +1232,30 @@ iframe {
         max-width: 135px !important;
         max-height: 135px !important;
     }
-
-    .ai-section {
-        padding: 18px;
-    }
-
-    .ai-section h3 {
-        font-size: 1.25rem;
-    }
-
-    .ai-section p,
-    .ai-steps-list li {
-        font-size: 1.05rem;
-    }
-
-    .dashboard-button,
-    .dashboard-btn {
-        min-height: 48px;
-        padding: 13px 18px;
-        border-radius: 11px;
-        font-size: 0.98rem;
-    }
 }
 
 
 /* =========================================================
-   REDUCED MOTION
+   ACCESSIBILITY
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-    .dashboard-button,
-    .dashboard-btn {
-        transition: none;
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
+}
+
+
+
+
+
+
+.student-app-dashboard {
+    background: red !important;
+    padding: 40px !important;
 }
